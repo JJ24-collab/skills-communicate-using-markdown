@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ćwiczenie: Praktyczne zastosowanie sztucznej inteligencji</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script type='text/javascript' src='https://klasterinnowacjispoecznych.bitrix24.pl/plNYT_AWxlc5Bn099ExF2IXyrV36us2pZtDsx27ujd0ODQFO9m98y0vgtpqid1_pZ44Hzzg2_R1Z-sjavwnMBicmRFu0rE-yFTY_9ZTsDvAjV4hzWAI_yXj-73Ic8ybWbSeTVR40Fgs4X-V7lUVwPdgCfOWoLaCNGib3MwzXIaI='></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg:#ffffff;
+      --card:#ffffff;
+      --muted:#5a5f6b;
+      --text:#1f2430;
+      --border:rgba(16,24,40,0.08);
+      --shadow:0 15px 35px rgba(15,23,42,0.05);
+      --accent:#1f2430;
+      --tag:#ededed;
+      --success:#1f7a4d;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-shell {
+      min-height: 100vh;
+      padding: 32px 16px 80px;
+      background: var(--bg);
+    }
+
+    .app-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .logo-bar {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .page-header h1 {
+      margin: 0 0 6px;
+      font-size: 1.9rem;
+      color: var(--accent);
+    }
+
+    .page-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .app-content {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .section-card {
+      background: var(--card);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .section-eyebrow {
+      margin: 0;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      color: #0b4a8a;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      margin: 4px 0 0;
+      font-size: 1.6rem;
+      position: relative;
+      padding-bottom: 6px;
+    }
+
+    .section-head h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 64px;
+      background: #1d5fbf;
+      border-radius: 999px;
+    }
+
+    .section-tag {
+      background: #1d5fbf;
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .section-intro {
+      margin-top: 12px;
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .card-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .task-card {
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid rgba(15,23,42,0.08);
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 120ms ease, box-shadow 120ms ease;
+      height: 100%;
+    }
+
+    .task-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.12);
+    }
+
+    .task-card--done {
+      border-color: rgba(34,197,94,0.6);
+      box-shadow: 0 0 0 2px rgba(34,197,94,0.35), 0 16px 32px rgba(34,197,94,0.2);
+      background: #f2fbf5;
+    }
+
+    .task-card__category {
+      margin: 0;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .task-card__title {
+      margin: 4px 0 0;
+      font-size: 1.1rem;
+      position: relative;
+      padding-left: 12px;
+    }
+
+    .task-card__title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 4px;
+      width: 3px;
+      background: #1d5fbf;
+      border-radius: 999px;
+    }
+
+    .task-card__description {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      min-height: 44px;
+    }
+
+    .task-card__cta {
+      margin-top: 8px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(15,23,42,0.08);
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: #1d5fbf;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tool-panel {
+      background: #fff;
+      border: 1px solid rgba(15,23,42,0.08);
+      border-radius: 18px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .tool-panel h3 {
+      margin: 0;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+    }
+
+    .tool-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tool-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid rgba(15,23,42,0.1);
+      border-radius: 16px;
+      padding: 10px 14px;
+      background: #f8fbff;
+      text-decoration: none;
+      transition: background 120ms ease, transform 120ms ease;
+    }
+
+    .tool-card:hover {
+      background: #eef4ff;
+      transform: translateY(-2px);
+    }
+
+    .tool-card__logo {
+      height: 48px;
+      width: 48px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid rgba(15,23,42,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .tool-card__logo img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .tool-card__name {
+      margin: 0;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .tool-card__hint {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .prompt-builder-field {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .prompt-builder-field.filled {
+      border-color: #22c55e;
+      background: #f0fdf4;
+    }
+
+    .prompt-builder-field label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      color: #334155;
+    }
+
+    .prompt-builder-field textarea {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 0.95rem;
+      resize: vertical;
+      min-height: 80px;
+      font-family: inherit;
+    }
+
+    .prompt-builder-field textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .prompt-builder-field .hint {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    .prompt-preview {
+      background: #f8fafc;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      min-height: 150px;
+    }
+
+    .prompt-preview.complete {
+      border-color: #22c55e;
+      background: #f0fdf4;
+    }
+
+    .completeness-indicator {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .completeness-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      transition: background 0.3s;
+    }
+
+    .completeness-dot.filled {
+      background: #22c55e;
+    }
+
+    .site-footer {
+      margin-top: 40px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .site-footer p {
+      margin: 0 0 10px;
+      line-height: 1.5;
+    }
+
+    .site-footer small {
+      display: block;
+      line-height: 1.5;
+    }
+
+    .footer-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logos img {
+      max-height: 32px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    @media (max-width: 768px) {
+      .section-card {
+        padding: 24px;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .logo-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel" data-presets="react">
+    const { useState } = React;
+
+    const sectionTools = {
+      basic: [
+        {
+          name: 'PLLuM',
+          url: 'https://pllum.clarin-pl.eu/pllum_8x7b',
+          logo: 'https://www.klaster.org.pl/wp-content/uploads/2025/11/PLLuM_logo_RGB_color.png'
+        },
+        {
+          name: 'ChatGPT',
+          url: 'https://chatgpt.com/',
+          logo: 'https://www.klaster.org.pl/wp-content/uploads/2025/11/images.png'
+        }
+      ]
+    };
+
+// --- NOWA STRUKTURA ĆWICZEŃ Z KONSTRUKTOREM PROMPTÓW ---
+
+const exercises = [
+  {
+    id: 'basic_1',
+    section: 'basic',
+    category: 'Rozgrzewka',
+    title: 'Korektor Tekstu',
+    description: 'Najprostsze zastosowanie: poprawianie błędów ortograficznych i literówek.',
+    steps: [
+      {
+        title: 'Wstydliwe błędy - korekta tekstu',
+        instruction: 'Do urzędu wpłynęło pismo od mieszkańca z ul. Krótkiej z prośbą o weryfikację dokumentów. Niestety, tekst jest pełen błędów ortograficznych i interpunkcyjnych, które utrudniają zrozumienie sprawy. Twoje zadanie: użyj AI do poprawienia błędów, zachowując oryginalny sens wypowiedzi.',
+        context: 'Tekst wejściowy: "W zionzku z rzonadaniem mieszkanca ul. Krutkiej, pszesyłam dokumety do weryfikacij, kture byly złorzone wczoraj."',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA - Kim ma być AI?',
+            placeholder: 'Przykład: Jesteś ekspertem językowym i korektorem...',
+            hint: 'Określ, jaką kompetencję ma mieć AI (np. korektor, redaktor, ekspert językowy)',
+            example: 'Jesteś doświadczonym korektorem tekstów urzędowych z 15-letnim stażem.'
+          },
+          context: {
+            label: '📋 KONTEKST - Opisz sytuację',
+            placeholder: 'Podaj szczegóły sytuacji...',
+            hint: 'Wyjaśnij, skąd pochodzi tekst i dlaczego wymaga poprawy',
+            example: 'Otrzymałem pismo od mieszkańca, które zawiera liczne błędy ortograficzne i interpunkcyjne. Tekst dotyczy przesłania dokumentów do weryfikacji.'
+          },
+          goal: {
+            label: '🎯 CEL - Co konkretnie ma zrobić AI?',
+            placeholder: 'Opisz dokładnie, czego oczekujesz...',
+            hint: 'Precyzyjnie określ zadanie (np. popraw błędy, nie zmieniając sensu)',
+            example: 'Popraw wszystkie błędy ortograficzne i interpunkcyjne w poniższym tekście, zachowując dokładnie jego pierwotny sens i wydźwięk.'
+          },
+          format: {
+            label: '📄 FORMAT - Jaka ma być forma wyniku?',
+            placeholder: 'Określ, jak ma wyglądać odpowiedź...',
+            hint: 'Wskaż strukturę odpowiedzi (np. tylko poprawiony tekst, lista zmian)',
+            example: 'Podaj wyłącznie poprawioną wersję tekstu, bez dodatkowych komentarzy czy wyjaśnień.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA - Jakie są wymagania bezpieczeństwa?',
+            placeholder: 'Dodaj zasady bezpieczeństwa i dodatkowe wymagania...',
+            hint: 'Określ, czego AI NIE ma robić (np. nie zmieniaj treści merytorycznej, zachowaj poufność)',
+            example: 'Nie zmieniaj znaczenia tekstu, nie dodawaj nowych informacji, zachowaj oryginalny styl wypowiedzi mieszkańca.'
+          },
+          inputData: {
+            label: '📝 DANE WEJŚCIOWE - Wklej tekst do poprawy',
+            placeholder: 'Wklej tutaj tekst z błędami...',
+            hint: 'To jest materiał, który AI ma przetworzyć',
+            example: 'W zionzku z rzonadaniem mieszkanca ul. Krutkiej, pszesyłam dokumety do weryfikacij, kture byly złorzone wczoraj.'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Nadając AI rolę korektora i precyzyjnie określając cel, otrzymujesz odpowiedź dopasowaną do potrzeb. Ograniczenia chronią przed niezamierzonymi zmianami w treści.'
+      }
+    ]
+  },
+  {
+    id: 'basic_2',
+    section: 'basic',
+    category: 'Rozgrzewka',
+    title: 'Proste Pismo Urzędowe',
+    description: 'Napisanie podania o urlop lub wewnętrznego zaproszenia.',
+    steps: [
+      {
+        title: 'Podanie o urlop wypoczynkowy',
+        instruction: 'Musisz przygotować formalne podanie urlopowe dla inspektora Jana Kowalskiego, który chce wziąć urlop wypoczynkowy od 15 do 20 sierpnia z powodu spraw rodzinnych. Dokument powinien trafić do Wójta Gminy.',
+        context: 'Dane: Jan Kowalski, stanowisko: inspektor, termin urlopu: 15-20 sierpnia, powód: sprawy rodzinne, adresat: Wójt Gminy',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA - Kim ma być AI?',
+            placeholder: 'Przykład: Jesteś specjalistą ds. kadr...',
+            hint: 'AI powinno znać konwencje pisma urzędowego',
+            example: 'Jesteś specjalistą ds. kadr w administracji samorządowej, znającym standardy dokumentów urzędowych.'
+          },
+          context: {
+            label: '📋 KONTEKST - Opisz sytuację',
+            placeholder: 'Wyjaśnij, kto składa podanie i w jakim celu...',
+            hint: 'Podaj wszystkie istotne informacje o pracowniku i urlopie',
+            example: 'Pracownik na stanowisku inspektora składa wniosek o urlop wypoczynkowy w sierpniu z powodów rodzinnych.'
+          },
+          goal: {
+            label: '🎯 CEL - Co ma powstać?',
+            placeholder: 'Opisz, jaki dokument ma być stworzony...',
+            hint: 'Określ typ dokumentu i jego przeznaczenie',
+            example: 'Napisz formalne podanie o urlop wypoczynkowy skierowane do Wójta Gminy, zgodne ze standardami korespondencji urzędowej.'
+          },
+          format: {
+            label: '📄 FORMAT - Jaka struktura dokumentu?',
+            placeholder: 'Określ układ i elementy pisma...',
+            hint: 'Wymień wymagane elementy (nagłówek, dane, treść, podpis)',
+            example: 'Dokument powinien zawierać: nagłówek z adresatem, dane wnioskodawcy, treść wniosku z terminem i uzasadnieniem, formułę końcową i miejsce na podpis z datą.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA - Dodatkowe wymagania',
+            placeholder: 'Co dokument musi, a czego nie może zawierać...',
+            hint: 'Określ styl, ton i zasady bezpieczeństwa',
+            example: 'Użyj oficjalnego, ale zwięzłego języka. Nie używaj prawdziwych adresów zamieszkania ani numerów PESEL. Treść nie może przekraczać jednej strony A4.'
+          },
+          inputData: {
+            label: '📝 DANE DO WYKORZYSTANIA',
+            placeholder: 'Podaj konkretne dane do umieszczenia w piśmie...',
+            hint: 'Imię, nazwisko, stanowisko, termin, powód',
+            example: 'Imię i nazwisko: Jan Kowalski\nStanowisko: inspektor\nTermin urlopu: od 15 do 20 sierpnia 2025 r.\nPowód: sprawy rodzinne\nAdresat: Wójt Gminy Przykładowo'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Format pisma urzędowego jest sformalizowany. Podając AI rolę specjalisty ds. kadr i dokładnie określając strukturę dokumentu, otrzymujesz tekst gotowy do wykorzystania.'
+      }
+    ]
+  },
+  {
+    id: 'pllum_1',
+    section: 'main',
+    category: 'Komunikacja z mieszkańcami',
+    title: 'Trudny E-mail od mieszkańca',
+    description: 'Jak profesjonalnie odpowiedzieć na emocjonalną skargę?',
+    steps: [
+      {
+        title: 'Neutralizacja emocji - notatka służbowa',
+        instruction: 'Do urzędu wpłynął bardzo emocjonalny e-mail od mieszkańca ul. Polnej, który jest zdenerwowany dziurą w drodze. Tekst zawiera wulgaryzmy i oskarżenia. Twoim zadaniem jest przekształcenie tego maila w profesjonalną notatkę służbową, która wydobędzie fakty i będzie podstawą do dalszego postępowania.',
+        context: 'E-mail od mieszkańca: "NO ILE MOZNA CZEKAC NA TE DZIURE NA POLNEJ??? JUZ DRUGI RAZ URWALEM KOLPAK!!! ROBICIE COS CZY TYLKO KAWE PIJECIE???"',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA - Kim ma być AI?',
+            placeholder: 'Przykład: Jesteś doświadczonym pracownikiem...',
+            hint: 'AI powinno umieć neutralizować emocje i wydobywać fakty',
+            example: 'Jesteś doświadczonym pracownikiem kancelarii urzędu gminy, specjalizującym się w obsłudze skarg i wniosków mieszkańców.'
+          },
+          context: {
+            label: '📋 KONTEKST - Opisz sytuację',
+            placeholder: 'Wyjaśnij problem z emocjonalnym mailem...',
+            hint: 'Podkreśl, że tekst wymaga przekształcenia do celów służbowych',
+            example: 'Otrzymałem bardzo emocjonalny e-mail od mieszkańca, zawierający wulgaryzmy i oskarżenia pod adresem urzędu. Tekst dotyczy zgłoszenia uszkodzenia drogi.'
+          },
+          goal: {
+            label: '🎯 CEL - Co ma powstać?',
+            placeholder: 'Co dokładnie ma zrobić AI?',
+            hint: 'Określ, że chodzi o wydobycie faktów bez emocji',
+            example: 'Przekształć ten e-mail w profesjonalną notatkę służbową, usuwając wszystkie wulgaryzmy, emocje i oskarżenia. Zostaw wyłącznie konkretne fakty dotyczące zgłoszenia.'
+          },
+          format: {
+            label: '📄 FORMAT - Struktura notatki',
+            placeholder: 'Jak ma wyglądać notatka służbowa?',
+            hint: 'Określ elementy notatki (data, przedmiot, opis stanu faktycznego)',
+            example: 'Notatka powinna zawierać: datę wpływu, zwięzły temat, obiektywny opis zgłoszenia (lokalizacja, opis problemu, czy mieszkaniec zgłaszał szkodę).'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA - Zasady bezpieczeństwa',
+            placeholder: 'Jakie są dodatkowe wymagania?',
+            hint: 'Określ ton i zasady przetwarzania danych osobowych',
+            example: 'Używaj neutralnego, rzeczowego języka urzędowego. Jeśli w treści pojawia się nazwisko lub adres, zamień na "mieszkaniec ul. [nazwa ulicy]". Notatka nie może zawierać ocen ani sugestii winy.'
+          },
+          inputData: {
+            label: '📝 TREŚĆ E-MAILA DO PRZETWORZENIA',
+            placeholder: 'Wklej oryginalny e-mail...',
+            hint: 'Wklej dokładnie taki tekst, jaki wpłynął',
+            example: 'NO ILE MOZNA CZEKAC NA TE DZIURE NA POLNEJ??? JUZ DRUGI RAZ URWALEM KOLPAK!!! ROBICIE COS CZY TYLKO KAWE PIJECIE???'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Emocje utrudniają merytoryczną pracę. AI potrafi oddzielić fakty od emocji, jeśli jasno określisz rolę pracownika kancelarii i wskażesz neutralny ton notatki.'
+      },
+      {
+        title: 'Odpowiedź do mieszkańca',
+        instruction: 'Teraz musisz przygotować oficjalną odpowiedź na zgłoszenie mieszkańca. Odpowiedź powinna być uprzejma, ale stanowcza, wyjaśniać sytuację budżetową i informować o dalszych krokach.',
+        context: 'Numer sprawy: 123/2024, problem: dziura w drodze na ul. Polnej, status: budżet na naprawy bieżące wyczerpany, ul. Polna jest pierwsza w kolejce remontów na wiosnę',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA - Kim ma być AI?',
+            placeholder: 'Przykład: Jesteś kierownikiem działu...',
+            hint: 'AI musi umieć komunikować trudne informacje w sposób profesjonalny',
+            example: 'Jesteś kierownikiem działu infrastruktury w urzędzie gminy, odpowiedzialnym za kontakt z mieszkańcami w sprawach dróg.'
+          },
+          context: {
+            label: '📋 KONTEKST - Opisz sytuację',
+            placeholder: 'Wyjaśnij stan sprawy i ograniczenia budżetowe...',
+            hint: 'Podaj informacje, które trzeba przekazać mieszkańcowi',
+            example: 'Mieszkaniec zgłosił uszkodzenie drogi (dziurę w jezdni na ul. Polnej). Sprawa została zarejestrowana pod numerem 123/2024. Środki na naprawy bieżące w tym roku są już wyczerpane, ale ul. Polna jest na pierwszym miejscu listy remontów planowanych na wiosnę.'
+          },
+          goal: {
+            label: '🎯 CEL - Co ma osiągnąć odpowiedź?',
+            placeholder: 'Jaki efekt ma przynieść ta wiadomość?',
+            hint: 'Określ, co mieszkaniec ma zrozumieć po przeczytaniu',
+            example: 'Napisz oficjalną odpowiedź na zgłoszenie, która: (1) podziękuje za zgłoszenie, (2) poinformuje o numerze sprawy, (3) wyjaśni sytuację budżetową w sposób zrozumiały i pełen szacunku, (4) zapewni o priorytetowym potraktowaniu sprawy wiosną.'
+          },
+          format: {
+            label: '📄 FORMAT - Struktura odpowiedzi',
+            placeholder: 'Jak zbudować e-mail?',
+            hint: 'Określ elementy odpowiedzi (nagłówek, podziękowanie, wyjaśnienie, deklaracja)',
+            example: 'E-mail powinien zawierać: uprzejme powitanie, podziękowanie za zgłoszenie z podaniem numeru sprawy, spokojne wyjaśnienie sytuacji budżetowej (bez usprawiedliwiania się), informację o harmonogramie napraw, uprzejme zakończenie.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA - Ton i wymagania',
+            placeholder: 'Jakich zasad należy przestrzegać?',
+            hint: 'Określ ton i czego unikać',
+            example: 'Ton: profesjonalny, spokojny, pełen szacunku, ale stanowczy. NIE przepraszaj nadmiernie. NIE obiecuj konkretnej daty naprawy (oprócz ogólnego "wiosna"). NIE używaj żargonu urzędniczego. Długość: maksymalnie 8-10 zdań.'
+          },
+          inputData: {
+            label: '📝 DANE DO WYKORZYSTANIA W ODPOWIEDZI',
+            placeholder: 'Podaj szczegóły sprawy...',
+            hint: 'Wszystkie informacje, które mają znaleźć się w odpowiedzi',
+            example: 'Numer sprawy: 123/2024\nLokalizacja: ul. Polna\nProblem: uszkodzenie nawierzchni (dziura)\nStatus budżetu: środki na naprawy bieżące wyczerpane\nPlan naprawy: wiosna (priorytet - pierwsze miejsce na liście)'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Trudne sytuacje wymagają empatii i jasności. Określając ton "stanowczy, ale pełen szacunku" i zakazując nadmiernych przeprosin, otrzymujesz odpowiedź profesjonalną i nie uległą.'
+      }
+    ]
+  }
+];
+
+// --- KOMPONENTY ---
+
+const Card = ({ item, onClick, isCompleted }) => (
+  <div onClick={onClick} className={`task-card ${isCompleted ? 'task-card--done' : ''}`}>
+    <div>
+      <p className="task-card__category">{item.category}</p>
+      <h3 className="task-card__title">{item.title}</h3>
+    </div>
+    <p className="task-card__description">{item.description}</p>
+    <div className="task-card__cta">
+      {isCompleted ? 'Powtórz zadanie' : 'Zbuduj prompt'} <span aria-hidden="true">→</span>
+    </div>
+  </div>
+);
+
+const PromptBuilder = ({ stepData, promptParts, onPromptChange }) => {
+  const builder = stepData.promptBuilder;
+  const fields = ['role', 'context', 'goal', 'format', 'constraints', 'inputData'];
+
+  const filledCount = fields.filter(f => promptParts[f]?.trim()).length;
+  const isComplete = filledCount === fields.length;
+
+  const buildFullPrompt = () => {
+    if (!isComplete) return 'Wypełnij wszystkie pola powyżej, aby zobaczyć pełny prompt...';
+
+    return `${promptParts.role}
+
+${promptParts.context}
+
+${promptParts.goal}
+
+${promptParts.format}
+
+${promptParts.constraints}
+
+Tekst/dane do przetworzenia:
+${promptParts.inputData}`;
+  };
+
+  return (
+    <div>
+      <div className="completeness-indicator">
+        {fields.map((field, idx) => (
+          <div
+            key={field}
+            className={`completeness-dot ${promptParts[field]?.trim() ? 'filled' : ''}`}
+            title={`${field}: ${promptParts[field]?.trim() ? 'Wypełnione' : 'Do wypełnienia'}`}
+          />
+        ))}
+      </div>
+
+      {fields.map(field => {
+        const config = builder[field];
+        return (
+          <div
+            key={field}
+            className={`prompt-builder-field ${promptParts[field]?.trim() ? 'filled' : ''}`}
+          >
+            <label>{config.label}</label>
+            <textarea
+              placeholder={config.placeholder}
+              value={promptParts[field] || ''}
+              onChange={(e) => onPromptChange(field, e.target.value)}
+            />
+            <div className="hint">
+              💡 {config.hint}
+              <br />
+              <strong>Przykład:</strong> {config.example}
+            </div>
+          </div>
+        );
+      })}
+
+      <div style={{ marginTop: '24px' }}>
+        <h4 style={{ marginBottom: '12px', fontSize: '1.1rem', fontWeight: 'bold' }}>
+          📋 Podgląd twojego promptu {isComplete ? '✅' : `(${filledCount}/6)`}
+        </h4>
+        <div className={`prompt-preview ${isComplete ? 'complete' : ''}`}>
+          {buildFullPrompt()}
+        </div>
+
+        {isComplete && (
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(buildFullPrompt());
+              alert('✅ Prompt skopiowany! Teraz wklej go do narzędzia AI.');
+            }}
+            style={{
+              marginTop: '16px',
+              width: '100%',
+              padding: '16px',
+              background: '#22c55e',
+              color: 'white',
+              border: 'none',
+              borderRadius: '12px',
+              fontSize: '1.1rem',
+              fontWeight: 'bold',
+              cursor: 'pointer'
+            }}
+          >
+            📋 SKOPIUJ GOTOWY PROMPT
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const Modal = ({ exercise, onClose, onComplete }) => {
+  const [step, setStep] = useState(0);
+  const [promptParts, setPromptParts] = useState({});
+
+  const currentData = exercise.steps[step];
+  const isLastStep = step === exercise.steps.length - 1;
+  const toolList = sectionTools[exercise.section] || [];
+
+  const handlePromptChange = (field, value) => {
+    setPromptParts(prev => ({ ...prev, [field]: value }));
+  };
+
+  return (
+    <div className="fixed inset-0 bg-slate-900/70 backdrop-blur-md z-50 flex items-center justify-center p-4">
+      <div className="bg-white w-full max-w-6xl h-[90vh] max-h-[900px] rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+
+        <div className="p-6 border-b border-slate-200 bg-white flex justify-between items-center shrink-0">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">Konstruktor Promptów</p>
+            <h2 className="text-2xl font-bold text-slate-900 mt-1">{exercise.title}</h2>
+            <p className="text-sm text-slate-500 mt-1">Krok {step + 1} z {exercise.steps.length}: {currentData.title}</p>
+          </div>
+          <button
+            onClick={onClose}
+            className="px-4 py-2 border border-slate-300 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            Zamknij
+          </button>
+        </div>
+
+        <div className="flex-1 p-8 overflow-y-auto bg-white">
+          <div className="grid md:grid-cols-2 gap-8">
+
+            {/* Lewa kolumna - Instrukcje */}
+            <div className="space-y-6">
+              {toolList.length > 0 && (
+                <div className="tool-panel">
+                  <h3>🛠️ Narzędzia do wykorzystania</h3>
+                  <div className="tool-list">
+                    {toolList.map(tool => (
+                      <a
+                        key={tool.name}
+                        href={tool.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="tool-card"
+                      >
+                        <div className="tool-card__logo">
+                          <img src={tool.logo} alt={tool.name} />
+                        </div>
+                        <div>
+                          <p className="tool-card__name">{tool.name}</p>
+                          <p className="tool-card__hint">Otwórz narzędzie</p>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="bg-blue-50 border-l-4 border-blue-600 p-5 rounded-r-lg">
+                <h3 className="text-lg font-bold text-blue-900 mb-2">📖 Sytuacja</h3>
+                <p className="text-blue-800 leading-relaxed">{currentData.instruction}</p>
+              </div>
+
+              <div className="bg-amber-50 border-l-4 border-amber-600 p-5 rounded-r-lg">
+                <h3 className="text-lg font-bold text-amber-900 mb-2">📌 Kontekst sprawy</h3>
+                <p className="text-amber-800 leading-relaxed whitespace-pre-wrap">{currentData.context}</p>
+              </div>
+
+              <div className="bg-green-50 border-l-4 border-green-600 p-5 rounded-r-lg">
+                <h3 className="text-lg font-bold text-green-900 mb-2">{currentData.learningNote.split('**')[1]}</h3>
+                <p className="text-green-800 leading-relaxed">{currentData.learningNote.split('**')[2]}</p>
+              </div>
+            </div>
+
+            {/* Prawa kolumna - Konstruktor */}
+            <div>
+              <div className="bg-slate-50 border-2 border-slate-300 rounded-xl p-6 mb-4">
+                <h3 className="text-xl font-bold mb-2">🔨 Zbuduj swój prompt</h3>
+                <p className="text-sm text-slate-600 mb-4">
+                  Wypełnij wszystkie 6 pól poniżej. Każde pole odpowiada za kluczowy element dobrego promptu.
+                  Możesz wzorować się na przykładach lub napisać własne wersje.
+                </p>
+              </div>
+
+              <PromptBuilder
+                stepData={currentData}
+                promptParts={promptParts}
+                onPromptChange={handlePromptChange}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="p-5 border-t border-slate-200 flex justify-between items-center bg-white shrink-0">
+          <button
+            onClick={() => {
+              setStep(s => Math.max(0, s - 1));
+              setPromptParts({});
+            }}
+            disabled={step === 0}
+            className="text-slate-500 font-medium px-4 py-2 rounded hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed"
+          >
+            ← Poprzedni krok
+          </button>
+
+          {!isLastStep ? (
+            <button
+              onClick={() => {
+                setStep(s => s + 1);
+                setPromptParts({});
+              }}
+              className="bg-blue-600 text-white font-bold px-8 py-3 rounded-lg shadow-lg hover:bg-blue-500"
+            >
+              Następny krok →
+            </button>
+          ) : (
+            <button
+              onClick={() => onComplete(exercise.id)}
+              className="bg-green-600 text-white font-bold px-8 py-3 rounded-lg shadow-lg hover:bg-green-500"
+            >
+              ✅ Zakończ zadanie
+            </button>
+          )}
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+// --- APLIKACJA GŁÓWNA ---
+
+const TrainingApp = () => {
+  const [activeExercise, setActiveExercise] = useState(null);
+  const [completedExercises, setCompletedExercises] = useState([]);
+
+  const handleComplete = (id) => {
+    if (!completedExercises.includes(id)) {
+      setCompletedExercises([...completedExercises, id]);
+    }
+    setActiveExercise(null);
+  };
+
+  return (
+    <div className="app-shell">
+      <div className="app-wrap">
+        <header className="logo-bar">
+          <img
+            src="https://www.klaster.org.pl/wp-content/uploads/2025/10/logo-uucpjst-full.png"
+            alt="Logotyp projektu UUCP JST"
+            className="h-12 w-auto object-contain"
+          />
+          <div className="page-header">
+            <h1>Ćwiczenie: Praktyczne zastosowanie sztucznej inteligencji</h1>
+            <p>Warsztat promptingu - nauka przez działanie</p>
+          </div>
+        </header>
+
+        <main className="app-content">
+          <section className="section-card">
+            <div className="section-head">
+              <div>
+                <p className="section-eyebrow">1. Rozgrzewka - Podstawy promptingu</p>
+                <h2>Zbuduj swoje pierwsze prompty</h2>
+              </div>
+              <span className="section-tag">Interaktywne</span>
+            </div>
+            <p className="section-intro">
+              <strong>⚠️ UWAGA: To NIE są gotowe prompty do skopiowania!</strong> Każde ćwiczenie wymaga od Ciebie
+              samodzielnego zbudowania promptu przez wypełnienie 6 kluczowych elementów. Uczysz się <strong>PROMPTINGU</strong>,
+              nie kopiowania.
+            </p>
+            <div className="card-grid">
+              {exercises.filter(e => e.section === 'basic').map(ex => (
+                <Card
+                  key={ex.id}
+                  item={ex}
+                  isCompleted={completedExercises.includes(ex.id)}
+                  onClick={() => setActiveExercise(ex)}
+                />
+              ))}
+            </div>
+          </section>
+
+          <section className="section-card">
+            <div className="section-head">
+              <div>
+                <p className="section-eyebrow">2. Zaawansowane scenariusze</p>
+                <h2>Komunikacja z mieszkańcami</h2>
+              </div>
+              <span className="section-tag">PLLuM</span>
+            </div>
+            <p className="section-intro">
+              Trudne sytuacje wymagają precyzyjnych promptów. Naucz się budować polecenia dla AI,
+              które zapewnią profesjonalną komunikację nawet w konfliktowych sprawach.
+            </p>
+            <div className="card-grid">
+              {exercises.filter(e => e.section === 'main').map(ex => (
+                <Card
+                  key={ex.id}
+                  item={ex}
+                  isCompleted={completedExercises.includes(ex.id)}
+                  onClick={() => setActiveExercise(ex)}
+                />
+              ))}
+            </div>
+          </section>
+        </main>
+
+        <footer className="site-footer">
+          <div className="footer-logos">
+            <img
+              src="https://www.klaster.org.pl/wp-content/uploads/2025/10/logotypy-uccpjst2.png"
+              alt="Logotypy dofinansowania projektu UUCP JST"
+            />
+          </div>
+          <p>
+            Materiały ćwiczeniowe przygotowane w ramach projektu Uzupełnienie umiejętności cyfrowych pracowników JST.
+          </p>
+          <small>
+            Projekt współfinansowany ze środków UE w ramach KPO, działanie C2.1.3 „E-kompetencje".
+            Maksymalna kwota dofinansowania: 10&nbsp;824&nbsp;674,50&nbsp;zł. Nr projektu: KPOD.05.08-IW.06-0089/25.
+          </small>
+        </footer>
+      </div>
+
+      {activeExercise && (
+        <Modal
+          exercise={activeExercise}
+          onClose={() => setActiveExercise(null)}
+          onComplete={handleComplete}
+        />
+      )}
+    </div>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<TrainingApp />);
+  </script>
+</body>
+</html>
