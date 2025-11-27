@@ -879,13 +879,65 @@ const exercises = [
         learningNote: '💡 **Dlaczego to działa?** Trudne sytuacje wymagają empatii i jasności. Określając ton "stanowczy, ale pełen szacunku" i zakazując nadmiernych przeprosin, otrzymujesz odpowiedź profesjonalną, która nie jest ani uległa, ani agresywna.'
       }
     ]
+  },
+
+  // ==========================================
+  // WIĘCEJ ĆWICZEŃ PLLuM - PRAKTYCZNE SCENARIUSZE
+  // ==========================================
+  {
+    id: 'pllum_festyn',
+    section: 'main',
+    category: 'Kreatywność',
+    title: 'Organizacja Festynu',
+    description: 'Tworzenie haseł promocyjnych i przemówień na gminne wydarzenia.',
+    steps: [
+      {
+        title: 'Hasła promocyjne na plakaty',
+        instruction: 'Urząd organizuje Ekologiczne Dożynki Gminne i potrzebujesz kilku chwytliwych, rymowanych haseł na plakaty, stronę www i zapowiedzi konferansjera. Hasła mają być rodzinne, wesołe i podkreślać ekologiczny charakter.',
+        context: 'Wydarzenie: Ekologiczne Dożynki Gminne, grupa docelowa: rodziny z dziećmi, ton: wesoły, ekologiczny',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI powinno być kreatywne i znać marketing eventowy',
+            example: 'Jesteś kreatywnym copywriterem specjalizującym się w promocji wydarzeń lokalnych i kampaniach ekologicznych dla gmin.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz wydarzenie...',
+            hint: 'Podaj charakter i grupę docelową',
+            example: 'Organizujemy Ekologiczne Dożynki Gminne - rodzinne wydarzenie łączące tradycję z nowoczesnością i ekologią. Chcemy przyciągnąć rodziny z dziećmi.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Określ liczbę i charakter haseł',
+            example: 'Wymyśl 5 krótkich, rymowanych haseł reklamowych promujących Ekologiczne Dożynki Gminne. Hasła mają być zabawne, rodzinne i zachęcać do udziału.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Jak przedstawić hasła?',
+            hint: 'Lista numerowana, długość, styl',
+            example: 'Przedstaw hasła jako listę numerowaną. Każde hasło: maksymalnie 8-12 słów, rymowane, z rytmem łatwym do zapamiętania.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Ton, język, czego unikać...',
+            hint: 'Określ styl i czego nie używać',
+            example: 'Ton: radosny, przyjazny, NIE infantylny. Używaj prostego języka. NIE używaj skomplikowanych słów ekologicznych. Hasła muszą być odpowiednie dla wszystkich grup wiekowych.'
+          },
+          inputData: {
+            label: '📝 INFORMACJE O WYDARZENIU',
+            placeholder: 'Kluczowe elementy do uwzględnienia...',
+            hint: 'Co ma być w hasłach?',
+            example: 'Kluczowe słowa: ekologia, tradycja, rodzina, dożynki, natura, lokalne produkty, zabawa\nCo będzie: stoiska z lokalnymi produktami, warsztaty ekologiczne dla dzieci, degustacja, koncert'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Określając AI jako copywritera i podając kluczowe słowa + ton, otrzymujesz hasła dopasowane do grupy docelowej. Ograniczenia "NIE infantylny" chronią przed przesadą.'
+      }
+    ]
   }
 ];
-
-// Uwaga: To jest 100% kompletna wersja z podstawowymi ćwiczeniami.
-// Pozostałe ćwiczenia (Fake News, Awaria, Festyn, itd.) mogą być dodane w takiej samej strukturze.
-// Każde nowe ćwiczenie wymaga obiektu z: id, section, category, title, description, steps[]
-// Każdy step wymaga: title, instruction, context, promptBuilder (6 pól), learningNote
 
 // --- KOMPONENTY REACT ---
 
