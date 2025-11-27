@@ -1042,6 +1042,112 @@ const exercises = [
         learningNote: '💡 **Dlaczego to działa?** W sytuacji kryzysowej ludzie potrzebują konkretów, nie usprawiedliwień. Określając strukturę "co-gdzie-kiedy-co robić" i ton rzeczowy, dostajesz komunikat, który informuje zamiast stresować.'
       }
     ]
+  },
+  {
+    id: 'pllum_protokol',
+    section: 'main',
+    category: 'Dokumentacja',
+    title: 'Protokół z Zebrania',
+    description: 'Przekształcanie chaotycznych notatek w oficjalny protokół.',
+    steps: [
+      {
+        title: 'Od notatek do protokołu',
+        instruction: 'Po zebraniu wiejskim zostały tylko krótkie, chaotyczne zapiski. Sołtys zanotował: "Start 17h, było 30 osób, temat: fundusz sołecki, pani Krysia krzyczała o lampie przy sklepie, uchwalono 5000 zł na tłuczeń, koniec 18:30". Z tego musisz stworzyć oficjalny protokół do dokumentacji.',
+        context: 'Notatki: rozpoczęcie 17:00, 30 uczestników, sołtys zagaił o funduszu, lampa nie działa przy sklepie (interwencja mieszkanki), uchwała: 5000 zł na tłuczeń drogowy, zakończenie 18:30',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać formaty protokołów urzędowych',
+            example: 'Jesteś sekretarzem zebrań wiejskich z wieloletnim doświadczeniem w sporządzaniu oficjalnych protokołów zgodnych z wymogami prawnymi i archiwalnymi.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz sytuację...',
+            hint: 'Wyjaśnij, skąd pochodzą notatki',
+            example: 'Po zebraniu wiejskim w sołectwie Przykładowo sołtys przekazał mi krótkie, chaotyczne notatki. Muszę przekształcić je w oficjalny Protokół z Zebrania Wiejskiego, który trafi do dokumentacji urzędowej i będzie podstawą do rozliczenia funduszu sołeckiego.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Oficjalny dokument z notatek',
+            example: 'Przekształć chaotyczne notatki w oficjalny Protokół z Zebrania Wiejskiego, który zawiera: datę i miejsce, listę obecności, porządek obrad, przebieg dyskusji, podjęte uchwały. Zachowaj fakty, ale uporządkuj je i napisz językiem urzędowym.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Struktura protokołu...',
+            hint: 'Wymień wymagane elementy',
+            example: 'Protokół powinien zawierać:\n1. Nagłówek (nazwa dokumentu, data, miejsce)\n2. Skład osobowy (kto przewodniczył, liczba uczestników)\n3. Porządek obrad (punkty)\n4. Przebieg (kto co mówił, w 3. osobie)\n5. Uchwały (konkretne decyzje z kwotami)\n6. Godzina zakończenia'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Zasady redakcyjne...',
+            hint: 'Styl i wymagania formalne',
+            example: 'Używaj 3. osoby liczby pojedynczej ("Sołtys otworzył...", "Pani Krystyna zgłosiła..."). NIE używaj potocznego języka ("krzyczała" → "zgłosiła uwagę"). Zachowaj wszystkie fakty i liczby. Protokół musi być profesjonalny, ale zwięzły - maksymalnie 1 strona A4.'
+          },
+          inputData: {
+            label: '📝 NOTATKI DO UPORZĄDKOWANIA',
+            placeholder: 'Wklej chaotyczne zapiski...',
+            hint: 'Surowe notatki ze spotkania',
+            example: 'Zaczęliśmy o 17. Było 30 osób. Sołtys zagaił o funduszu sołeckim. Pani Krysia krzyczała, że lampa nie działa przy sklepie. Uchwaliliśmy, że 5000 zł idzie na tłuczeń na drogę. Koniec 18:30.'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** AI potrafi rozpoznać strukturę protokołu i przekształcić nieformalne zapiski w oficjalny dokument. Kluczowe jest określenie, że używamy 3. osoby i języka urzędowego, ale zachowujemy wszystkie fakty.'
+      }
+    ]
+  },
+  {
+    id: 'pllum_petycja',
+    section: 'main',
+    category: 'Sprawy Obywatelskie',
+    title: 'Odpowiedź na Petycję',
+    description: 'Profesjonalna reakcja na petycję mieszkańców.',
+    steps: [
+      {
+        title: 'Formalna odpowiedź na petycję',
+        instruction: 'Mieszkańcy ul. Jesionowej przesłali petycję pt. "STOP rajdowi na Jesionowej - chcemy progu zwalniającego!". Opisują liczne przypadki przekraczania prędkości, potrącenie psa i groźną sytuację z dzieckiem. Proszą o próg zwalniający przy numerze 18. Musisz przygotować oficjalną odpowiedź.',
+        context: 'Petycja: próg zwalniający na ul. Jesionowej (przy nr 18), powód: przekraczanie prędkości, zagrożenie dla dzieci i zwierząt. Procedura: przekazano do opinii Policji i Starostwa, decyzja po otrzymaniu opinii',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać prawo petycyjne',
+            example: 'Jesteś kierownikiem referatu obywatelskiego w urzędzie gminy, odpowiedzialnym za merytoryczne rozpatrywanie petycji mieszkańców zgodnie z ustawą o petycjach.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz sytuację...',
+            hint: 'Co znajduje się w petycji i co urząd robi',
+            example: 'Mieszkańcy ulicy Jesionowej złożyli petycję o montaż progu zwalniającego. Opisują problem przekraczania prędkości, wspominają o potrąceniu psa i zagrożeniu dla dzieci. Wójt przekazał sprawę do opiniowania przez Policję i Zarząd Dróg Powiatowych (droga powiatowa). Decyzja zostanie podjęta po otrzymaniu opinii.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma osiągnąć odpowiedź?',
+            hint: 'Poinformować o procedurze, podziękować',
+            example: 'Napisz oficjalną odpowiedź na petycję, która: (1) podziękuje mieszkańcom za zgłoszenie problemu i troskę o bezpieczeństwo, (2) potwierdzi odbiór petycji, (3) wyjaśni procedurę (opinie Policji i Starostwa), (4) zapewni o monitorowaniu sytuacji, (5) poinformuje, że decyzja zapadnie po otrzymaniu opinii.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Struktura pisma...',
+            hint: 'Jak zbudować oficjalną odpowiedź',
+            example: 'Odpowiedź powinna zawierać: nagłówek z danymi urzędu i adresatami, numer i datę petycji, podziękowanie, streszczenie problemu (1-2 zdania), opis podjętych działań (przekazanie do opinii), informację o terminie decyzji, uprzejme zakończenie, podpis Wójta.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Ton i wymagania...',
+            hint: 'Jak odpowiadać na petycję',
+            example: 'Ton: oficjalny, pełen szacunku, ale NIE obiecujący. NIE gwarantuj montażu progu (to zależy od opinii). NIE bagatelizuj problemu. Podkreśl, że bezpieczeństwo jest priorytetem. Odpowiedź musi być zgodna z ustawą o petycjach (termin 30 dni na odpowiedź).'
+          },
+          inputData: {
+            label: '📝 INFORMACJE DO ODPOWIEDZI',
+            placeholder: 'Dane o petycji i procedurze...',
+            hint: 'Co trzeba uwzględnić',
+            example: 'Tytuł petycji: "STOP rajdowi na Jesionowej - chcemy progu!"\nLokalizacja: ul. Jesionowa, przy numerze 18\nProblem: przekraczanie prędkości, zagrożenie dla dzieci, potrącenie psa\nPodjęte działania: przekazano do opinii Policji i Starostwa Powiatowego\nCzas na decyzję: po otrzymaniu opinii (ok. 30 dni)'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Petycje wymagają szczególnej uwagi - mieszkańcy korzystają z prawa konstytucyjnego. Określając rolę kierownika referatu i ton "szacunek bez obietnic", otrzymujesz odpowiedź profesjonalną, która nie podejmuje decyzji za instytucje opiniujące.'
+      }
+    ]
   }
 ];
 
