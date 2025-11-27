@@ -2038,6 +2038,54 @@ const TrainingApp = () => {
             </div>
           </section>
 
+          <section className="section-card">
+            <div className="section-head">
+              <div>
+                <p className="section-eyebrow">3. ChatGPT - Obrazy, Pliki, Dane</p>
+                <h2>Zaawansowane możliwości AI</h2>
+              </div>
+              <span className="section-tag">ChatGPT</span>
+            </div>
+            <p className="section-intro">
+              ChatGPT to nie tylko tekst - potrafi generować obrazy (DALL-E), analizować dane, tworzyć formuły Excel
+              i pomagać w tworzeniu dokumentów. Poznaj możliwości, które oszczędzą Ci godzin pracy.
+            </p>
+            <div className="card-grid card-grid--three">
+              {exercises.filter(e => e.section === 'gpt').map(ex => (
+                <Card
+                  key={ex.id}
+                  item={ex}
+                  isCompleted={completedExercises.includes(ex.id)}
+                  onClick={() => setActiveExercise(ex)}
+                />
+              ))}
+            </div>
+          </section>
+
+          <section className="section-card">
+            <div className="section-head">
+              <div>
+                <p className="section-eyebrow">4. Dla Ekspertów</p>
+                <h2>Zaawansowane scenariusze</h2>
+              </div>
+              <span className="section-tag">Zaawansowane</span>
+            </div>
+            <p className="section-intro">
+              Złożone sytuacje wymagające szczególnych umiejętności: mediacje, wnioski grantowe, komunikacja międzynarodowa.
+              Prompty dla profesjonalistów, którzy chcą wykorzystać pełnię możliwości AI.
+            </p>
+            <div className="card-grid card-grid--three">
+              {exercises.filter(e => e.section === 'extra').map(ex => (
+                <Card
+                  key={ex.id}
+                  item={ex}
+                  isCompleted={completedExercises.includes(ex.id)}
+                  onClick={() => setActiveExercise(ex)}
+                />
+              ))}
+            </div>
+          </section>
+
         </main>
 
         <footer className="site-footer">
