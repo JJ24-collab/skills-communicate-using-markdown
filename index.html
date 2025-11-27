@@ -936,6 +936,112 @@ const exercises = [
         learningNote: '💡 **Dlaczego to działa?** Określając AI jako copywritera i podając kluczowe słowa + ton, otrzymujesz hasła dopasowane do grupy docelowej. Ograniczenia "NIE infantylny" chronią przed przesadą.'
       }
     ]
+  },
+  {
+    id: 'pllum_fake_news',
+    section: 'main',
+    category: 'Zarządzanie Kryzysem',
+    title: 'Reakcja na Fake News',
+    description: 'Profesjonalne reagowanie na plotki i dezinformację w internecie.',
+    steps: [
+      {
+        title: 'Sprostowanie plotki',
+        instruction: 'Na lokalnej grupie FB ktoś napisał: "ZAMYKAJĄ SZKOŁĘ PODSTAWOWĄ! Wójt już podpisał!". To nieprawda - trwa tylko remont dachu. Plotka rozchodzi się błyskawicznie i rodzice dzwonią do urzędu w panice. Musisz szybko przygotować oficjalne sprostowanie.',
+        context: 'Fake news: zamknięcie szkoły. Prawda: remont dachu, zakończenie przed 1 września. Szkoła funkcjonuje normalnie.',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać komunikację kryzysową',
+            example: 'Jesteś rzecznikiem prasowym urzędu gminy, specjalizującym się w komunikacji kryzysowej i zarządzaniu dezinformacją w mediach społecznościowych.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz sytuację...',
+            hint: 'Wyjaśnij, jaka plotka się rozeszła i jaka jest prawda',
+            example: 'Na lokalnej grupie facebookowej pojawiła się nieprawdziwa informacja o zamknięciu Szkoły Podstawowej nr 1. W rzeczywistości trwają prace remontowe dachu, które zakończą się przed rozpoczęciem roku szkolnego. Rodzice są zaniepokojeni i bombardują urząd telefonami.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma osiągnąć sprostowanie?',
+            hint: 'Uspokoić, podać fakty, zapobiec panice',
+            example: 'Napisz oficjalne sprostowanie Urzędu Gminy, które: (1) zdementuje plotkę o zamknięciu szkoły, (2) wyjaśni prawdziwy powód prac remontowych, (3) uspokoi rodziców informacją o terminie zakończenia remontu, (4) zapewni o normalnym funkcjonowaniu szkoły.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Struktura komunikatu...',
+            hint: 'Jak zbudować sprostowanie?',
+            example: 'Sprostowanie powinno zawierać: nagłówek "OFICJALNE STANOWISKO URZĘDU GMINY", krótkie dementis (1 zdanie), wyjaśnienie faktów (2-3 zdania), termin zakończenia prac, uspokajające zakończenie. Maksymalnie 8-10 zdań.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Ton i zasady...',
+            hint: 'Jak komunikować, czego unikać',
+            example: 'Ton: spokojny, rzeczowy, pełen autorytetu, ale NIE agresywny. NIE atakuj osoby, która rozpowszechniła plotkę. NIE używaj sformułowań "to kłamstwo". Skup się na faktach, nie na emocjach. Używaj formy bezosobowej ("Urząd informuje...").'
+          },
+          inputData: {
+            label: '📝 FAKTY DO PRZEKAZANIA',
+            placeholder: 'Prawdziwe informacje...',
+            hint: 'Co dokładnie się dzieje?',
+            example: 'Fakty:\n- Szkoła Podstawowa nr 1 NIE jest zamykana\n- Trwa remont dachu (wymiana pokrycia, naprawa rynien)\n- Termin zakończenia: 25 sierpnia 2025\n- Szkoła rozpocznie rok szkolny 1 września normalnie\n- Prace nie wpływają na działalność placówki'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** W kryzysie najważniejsza jest szybkość i spokój. Określając rolę rzecznika i ton "autorytatywny, ale nie agresywny", otrzymujesz komunikat, który gasi emocje zamiast je podsycać.'
+      }
+    ]
+  },
+  {
+    id: 'pllum_awaria',
+    section: 'main',
+    category: 'Zarządzanie Kryzysem',
+    title: 'Komunikat o Awarii',
+    description: 'Szybkie informowanie mieszkańców o awariach infrastruktury.',
+    steps: [
+      {
+        title: 'Pilny komunikat o braku wody',
+        instruction: 'Na osiedlu Słonecznym pękła magistrala wodociągowa i od godziny 6:00 rano nie ma wody. Ekipa naprawcza już pracuje, ale naprawa potrwa do wieczora. Pod szkołą podstawiono beczkowóz. Musisz natychmiast przygotować komunikat na stronę www i Facebooka.',
+        context: 'Awaria: pęknięta magistrala, brak wody od 6:00, obszar: osiedle Słoneczne (ok. 800 mieszkańców), przewidywany czas naprawy: do 20:00, beczkowóz przy SP nr 2',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać komunikację kryzysową w JST',
+            example: 'Jesteś pracownikiem działu komunikacji społecznej urzędu gminy, odpowiedzialnym za informowanie mieszkańców o awariach i zakłóceniach w funkcjonowaniu infrastruktury.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz awarię...',
+            hint: 'Podaj wszystkie istotne informacje',
+            example: 'O godzinie 6:00 doszło do pęknięcia magistrali wodociągowej na osiedlu Słonecznym. Około 800 mieszkańców jest bez dostępu do wody. Ekipa naprawcza już pracuje na miejscu. Pod Szkołą Podstawową nr 2 podstawiono beczkowóz z wodą pitną.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma osiągnąć komunikat?',
+            hint: 'Poinformować, uspokoić, wskazać rozwiązanie',
+            example: 'Napisz pilny komunikat dla mieszkańców, który: (1) jasno określi obszar i czas trwania awarii, (2) poda przewidywany czas naprawy, (3) wskaże alternatywne źródło wody (beczkowóz), (4) przeprosi za niedogodności bez nadmiernych emocji.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Jak zbudować komunikat?',
+            hint: 'Struktura wiadomości kryzysowej',
+            example: 'Komunikat powinien zawierać: nagłówek "AWARIA WODOCIĄGU" (wyraźny), informację o obszarze i czasie rozpoczęcia awarii, przewidywany czas naprawy (konkretna godzina), lokalizację beczkowozu, krótkie przeprosiny. Używaj akapitów, nie jednego bloku tekstu. Maksymalnie 6-8 zdań.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Ton, język, wymagania...',
+            hint: 'Jak komunikować kryzys?',
+            example: 'Ton: spokojny, rzeczowy, przepraszający, ale NIE panikujący. Podawaj TYLKO potwierdzone informacje. NIE obiecuj konkretnej godziny naprawy, jeśli nie jesteś pewien (używaj "przewidywany czas"). NIE używaj słów "katastrofa", "kryzys". Językiem prostym, bez żargonu technicznego.'
+          },
+          inputData: {
+            label: '📝 DANE O AWARII',
+            placeholder: 'Szczegóły techniczne...',
+            hint: 'Wszystkie informacje do przekazania',
+            example: 'Obszar: osiedle Słoneczne (ulice: Słoneczna, Jasna, Pogodna)\nCzas rozpoczęcia: 6:00\nPrzyczyna: pęknięcie magistrali\nPrzewidywany czas naprawy: do godz. 20:00\nBeczkowóz: parking przy Szkole Podstawowej nr 2, ul. Szkolna 15\nStatus: ekipa naprawcza na miejscu'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** W sytuacji kryzysowej ludzie potrzebują konkretów, nie usprawiedliwień. Określając strukturę "co-gdzie-kiedy-co robić" i ton rzeczowy, dostajesz komunikat, który informuje zamiast stresować.'
+      }
+    ]
   }
 ];
 
