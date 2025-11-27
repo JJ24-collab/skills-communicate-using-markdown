@@ -879,13 +879,829 @@ const exercises = [
         learningNote: '💡 **Dlaczego to działa?** Trudne sytuacje wymagają empatii i jasności. Określając ton "stanowczy, ale pełen szacunku" i zakazując nadmiernych przeprosin, otrzymujesz odpowiedź profesjonalną, która nie jest ani uległa, ani agresywna.'
       }
     ]
+  },
+
+  // ==========================================
+  // WIĘCEJ ĆWICZEŃ PLLuM - PRAKTYCZNE SCENARIUSZE
+  // ==========================================
+  {
+    id: 'pllum_festyn',
+    section: 'main',
+    category: 'Kreatywność',
+    title: 'Organizacja Festynu',
+    description: 'Tworzenie haseł promocyjnych i przemówień na gminne wydarzenia.',
+    steps: [
+      {
+        title: 'Hasła promocyjne na plakaty',
+        instruction: 'Urząd organizuje Ekologiczne Dożynki Gminne i potrzebujesz kilku chwytliwych, rymowanych haseł na plakaty, stronę www i zapowiedzi konferansjera. Hasła mają być rodzinne, wesołe i podkreślać ekologiczny charakter.',
+        context: 'Wydarzenie: Ekologiczne Dożynki Gminne, grupa docelowa: rodziny z dziećmi, ton: wesoły, ekologiczny',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI powinno być kreatywne i znać marketing eventowy',
+            example: 'Jesteś kreatywnym copywriterem specjalizującym się w promocji wydarzeń lokalnych i kampaniach ekologicznych dla gmin.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz wydarzenie...',
+            hint: 'Podaj charakter i grupę docelową',
+            example: 'Organizujemy Ekologiczne Dożynki Gminne - rodzinne wydarzenie łączące tradycję z nowoczesnością i ekologią. Chcemy przyciągnąć rodziny z dziećmi.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Określ liczbę i charakter haseł',
+            example: 'Wymyśl 5 krótkich, rymowanych haseł reklamowych promujących Ekologiczne Dożynki Gminne. Hasła mają być zabawne, rodzinne i zachęcać do udziału.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Jak przedstawić hasła?',
+            hint: 'Lista numerowana, długość, styl',
+            example: 'Przedstaw hasła jako listę numerowaną. Każde hasło: maksymalnie 8-12 słów, rymowane, z rytmem łatwym do zapamiętania.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Ton, język, czego unikać...',
+            hint: 'Określ styl i czego nie używać',
+            example: 'Ton: radosny, przyjazny, NIE infantylny. Używaj prostego języka. NIE używaj skomplikowanych słów ekologicznych. Hasła muszą być odpowiednie dla wszystkich grup wiekowych.'
+          },
+          inputData: {
+            label: '📝 INFORMACJE O WYDARZENIU',
+            placeholder: 'Kluczowe elementy do uwzględnienia...',
+            hint: 'Co ma być w hasłach?',
+            example: 'Kluczowe słowa: ekologia, tradycja, rodzina, dożynki, natura, lokalne produkty, zabawa\nCo będzie: stoiska z lokalnymi produktami, warsztaty ekologiczne dla dzieci, degustacja, koncert'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Określając AI jako copywritera i podając kluczowe słowa + ton, otrzymujesz hasła dopasowane do grupy docelowej. Ograniczenia "NIE infantylny" chronią przed przesadą.'
+      }
+    ]
+  },
+  {
+    id: 'pllum_fake_news',
+    section: 'main',
+    category: 'Zarządzanie Kryzysem',
+    title: 'Reakcja na Fake News',
+    description: 'Profesjonalne reagowanie na plotki i dezinformację w internecie.',
+    steps: [
+      {
+        title: 'Sprostowanie plotki',
+        instruction: 'Na lokalnej grupie FB ktoś napisał: "ZAMYKAJĄ SZKOŁĘ PODSTAWOWĄ! Wójt już podpisał!". To nieprawda - trwa tylko remont dachu. Plotka rozchodzi się błyskawicznie i rodzice dzwonią do urzędu w panice. Musisz szybko przygotować oficjalne sprostowanie.',
+        context: 'Fake news: zamknięcie szkoły. Prawda: remont dachu, zakończenie przed 1 września. Szkoła funkcjonuje normalnie.',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać komunikację kryzysową',
+            example: 'Jesteś rzecznikiem prasowym urzędu gminy, specjalizującym się w komunikacji kryzysowej i zarządzaniu dezinformacją w mediach społecznościowych.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz sytuację...',
+            hint: 'Wyjaśnij, jaka plotka się rozeszła i jaka jest prawda',
+            example: 'Na lokalnej grupie facebookowej pojawiła się nieprawdziwa informacja o zamknięciu Szkoły Podstawowej nr 1. W rzeczywistości trwają prace remontowe dachu, które zakończą się przed rozpoczęciem roku szkolnego. Rodzice są zaniepokojeni i bombardują urząd telefonami.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma osiągnąć sprostowanie?',
+            hint: 'Uspokoić, podać fakty, zapobiec panice',
+            example: 'Napisz oficjalne sprostowanie Urzędu Gminy, które: (1) zdementuje plotkę o zamknięciu szkoły, (2) wyjaśni prawdziwy powód prac remontowych, (3) uspokoi rodziców informacją o terminie zakończenia remontu, (4) zapewni o normalnym funkcjonowaniu szkoły.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Struktura komunikatu...',
+            hint: 'Jak zbudować sprostowanie?',
+            example: 'Sprostowanie powinno zawierać: nagłówek "OFICJALNE STANOWISKO URZĘDU GMINY", krótkie dementis (1 zdanie), wyjaśnienie faktów (2-3 zdania), termin zakończenia prac, uspokajające zakończenie. Maksymalnie 8-10 zdań.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Ton i zasady...',
+            hint: 'Jak komunikować, czego unikać',
+            example: 'Ton: spokojny, rzeczowy, pełen autorytetu, ale NIE agresywny. NIE atakuj osoby, która rozpowszechniła plotkę. NIE używaj sformułowań "to kłamstwo". Skup się na faktach, nie na emocjach. Używaj formy bezosobowej ("Urząd informuje...").'
+          },
+          inputData: {
+            label: '📝 FAKTY DO PRZEKAZANIA',
+            placeholder: 'Prawdziwe informacje...',
+            hint: 'Co dokładnie się dzieje?',
+            example: 'Fakty:\n- Szkoła Podstawowa nr 1 NIE jest zamykana\n- Trwa remont dachu (wymiana pokrycia, naprawa rynien)\n- Termin zakończenia: 25 sierpnia 2025\n- Szkoła rozpocznie rok szkolny 1 września normalnie\n- Prace nie wpływają na działalność placówki'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** W kryzysie najważniejsza jest szybkość i spokój. Określając rolę rzecznika i ton "autorytatywny, ale nie agresywny", otrzymujesz komunikat, który gasi emocje zamiast je podsycać.'
+      }
+    ]
+  },
+  {
+    id: 'pllum_awaria',
+    section: 'main',
+    category: 'Zarządzanie Kryzysem',
+    title: 'Komunikat o Awarii',
+    description: 'Szybkie informowanie mieszkańców o awariach infrastruktury.',
+    steps: [
+      {
+        title: 'Pilny komunikat o braku wody',
+        instruction: 'Na osiedlu Słonecznym pękła magistrala wodociągowa i od godziny 6:00 rano nie ma wody. Ekipa naprawcza już pracuje, ale naprawa potrwa do wieczora. Pod szkołą podstawiono beczkowóz. Musisz natychmiast przygotować komunikat na stronę www i Facebooka.',
+        context: 'Awaria: pęknięta magistrala, brak wody od 6:00, obszar: osiedle Słoneczne (ok. 800 mieszkańców), przewidywany czas naprawy: do 20:00, beczkowóz przy SP nr 2',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać komunikację kryzysową w JST',
+            example: 'Jesteś pracownikiem działu komunikacji społecznej urzędu gminy, odpowiedzialnym za informowanie mieszkańców o awariach i zakłóceniach w funkcjonowaniu infrastruktury.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz awarię...',
+            hint: 'Podaj wszystkie istotne informacje',
+            example: 'O godzinie 6:00 doszło do pęknięcia magistrali wodociągowej na osiedlu Słonecznym. Około 800 mieszkańców jest bez dostępu do wody. Ekipa naprawcza już pracuje na miejscu. Pod Szkołą Podstawową nr 2 podstawiono beczkowóz z wodą pitną.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma osiągnąć komunikat?',
+            hint: 'Poinformować, uspokoić, wskazać rozwiązanie',
+            example: 'Napisz pilny komunikat dla mieszkańców, który: (1) jasno określi obszar i czas trwania awarii, (2) poda przewidywany czas naprawy, (3) wskaże alternatywne źródło wody (beczkowóz), (4) przeprosi za niedogodności bez nadmiernych emocji.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Jak zbudować komunikat?',
+            hint: 'Struktura wiadomości kryzysowej',
+            example: 'Komunikat powinien zawierać: nagłówek "AWARIA WODOCIĄGU" (wyraźny), informację o obszarze i czasie rozpoczęcia awarii, przewidywany czas naprawy (konkretna godzina), lokalizację beczkowozu, krótkie przeprosiny. Używaj akapitów, nie jednego bloku tekstu. Maksymalnie 6-8 zdań.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Ton, język, wymagania...',
+            hint: 'Jak komunikować kryzys?',
+            example: 'Ton: spokojny, rzeczowy, przepraszający, ale NIE panikujący. Podawaj TYLKO potwierdzone informacje. NIE obiecuj konkretnej godziny naprawy, jeśli nie jesteś pewien (używaj "przewidywany czas"). NIE używaj słów "katastrofa", "kryzys". Językiem prostym, bez żargonu technicznego.'
+          },
+          inputData: {
+            label: '📝 DANE O AWARII',
+            placeholder: 'Szczegóły techniczne...',
+            hint: 'Wszystkie informacje do przekazania',
+            example: 'Obszar: osiedle Słoneczne (ulice: Słoneczna, Jasna, Pogodna)\nCzas rozpoczęcia: 6:00\nPrzyczyna: pęknięcie magistrali\nPrzewidywany czas naprawy: do godz. 20:00\nBeczkowóz: parking przy Szkole Podstawowej nr 2, ul. Szkolna 15\nStatus: ekipa naprawcza na miejscu'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** W sytuacji kryzysowej ludzie potrzebują konkretów, nie usprawiedliwień. Określając strukturę "co-gdzie-kiedy-co robić" i ton rzeczowy, dostajesz komunikat, który informuje zamiast stresować.'
+      }
+    ]
+  },
+  {
+    id: 'pllum_protokol',
+    section: 'main',
+    category: 'Dokumentacja',
+    title: 'Protokół z Zebrania',
+    description: 'Przekształcanie chaotycznych notatek w oficjalny protokół.',
+    steps: [
+      {
+        title: 'Od notatek do protokołu',
+        instruction: 'Po zebraniu wiejskim zostały tylko krótkie, chaotyczne zapiski. Sołtys zanotował: "Start 17h, było 30 osób, temat: fundusz sołecki, pani Krysia krzyczała o lampie przy sklepie, uchwalono 5000 zł na tłuczeń, koniec 18:30". Z tego musisz stworzyć oficjalny protokół do dokumentacji.',
+        context: 'Notatki: rozpoczęcie 17:00, 30 uczestników, sołtys zagaił o funduszu, lampa nie działa przy sklepie (interwencja mieszkanki), uchwała: 5000 zł na tłuczeń drogowy, zakończenie 18:30',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać formaty protokołów urzędowych',
+            example: 'Jesteś sekretarzem zebrań wiejskich z wieloletnim doświadczeniem w sporządzaniu oficjalnych protokołów zgodnych z wymogami prawnymi i archiwalnymi.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz sytuację...',
+            hint: 'Wyjaśnij, skąd pochodzą notatki',
+            example: 'Po zebraniu wiejskim w sołectwie Przykładowo sołtys przekazał mi krótkie, chaotyczne notatki. Muszę przekształcić je w oficjalny Protokół z Zebrania Wiejskiego, który trafi do dokumentacji urzędowej i będzie podstawą do rozliczenia funduszu sołeckiego.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Oficjalny dokument z notatek',
+            example: 'Przekształć chaotyczne notatki w oficjalny Protokół z Zebrania Wiejskiego, który zawiera: datę i miejsce, listę obecności, porządek obrad, przebieg dyskusji, podjęte uchwały. Zachowaj fakty, ale uporządkuj je i napisz językiem urzędowym.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Struktura protokołu...',
+            hint: 'Wymień wymagane elementy',
+            example: 'Protokół powinien zawierać:\n1. Nagłówek (nazwa dokumentu, data, miejsce)\n2. Skład osobowy (kto przewodniczył, liczba uczestników)\n3. Porządek obrad (punkty)\n4. Przebieg (kto co mówił, w 3. osobie)\n5. Uchwały (konkretne decyzje z kwotami)\n6. Godzina zakończenia'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Zasady redakcyjne...',
+            hint: 'Styl i wymagania formalne',
+            example: 'Używaj 3. osoby liczby pojedynczej ("Sołtys otworzył...", "Pani Krystyna zgłosiła..."). NIE używaj potocznego języka ("krzyczała" → "zgłosiła uwagę"). Zachowaj wszystkie fakty i liczby. Protokół musi być profesjonalny, ale zwięzły - maksymalnie 1 strona A4.'
+          },
+          inputData: {
+            label: '📝 NOTATKI DO UPORZĄDKOWANIA',
+            placeholder: 'Wklej chaotyczne zapiski...',
+            hint: 'Surowe notatki ze spotkania',
+            example: 'Zaczęliśmy o 17. Było 30 osób. Sołtys zagaił o funduszu sołeckim. Pani Krysia krzyczała, że lampa nie działa przy sklepie. Uchwaliliśmy, że 5000 zł idzie na tłuczeń na drogę. Koniec 18:30.'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** AI potrafi rozpoznać strukturę protokołu i przekształcić nieformalne zapiski w oficjalny dokument. Kluczowe jest określenie, że używamy 3. osoby i języka urzędowego, ale zachowujemy wszystkie fakty.'
+      }
+    ]
+  },
+  {
+    id: 'pllum_petycja',
+    section: 'main',
+    category: 'Sprawy Obywatelskie',
+    title: 'Odpowiedź na Petycję',
+    description: 'Profesjonalna reakcja na petycję mieszkańców.',
+    steps: [
+      {
+        title: 'Formalna odpowiedź na petycję',
+        instruction: 'Mieszkańcy ul. Jesionowej przesłali petycję pt. "STOP rajdowi na Jesionowej - chcemy progu zwalniającego!". Opisują liczne przypadki przekraczania prędkości, potrącenie psa i groźną sytuację z dzieckiem. Proszą o próg zwalniający przy numerze 18. Musisz przygotować oficjalną odpowiedź.',
+        context: 'Petycja: próg zwalniający na ul. Jesionowej (przy nr 18), powód: przekraczanie prędkości, zagrożenie dla dzieci i zwierząt. Procedura: przekazano do opinii Policji i Starostwa, decyzja po otrzymaniu opinii',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać prawo petycyjne',
+            example: 'Jesteś kierownikiem referatu obywatelskiego w urzędzie gminy, odpowiedzialnym za merytoryczne rozpatrywanie petycji mieszkańców zgodnie z ustawą o petycjach.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz sytuację...',
+            hint: 'Co znajduje się w petycji i co urząd robi',
+            example: 'Mieszkańcy ulicy Jesionowej złożyli petycję o montaż progu zwalniającego. Opisują problem przekraczania prędkości, wspominają o potrąceniu psa i zagrożeniu dla dzieci. Wójt przekazał sprawę do opiniowania przez Policję i Zarząd Dróg Powiatowych (droga powiatowa). Decyzja zostanie podjęta po otrzymaniu opinii.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma osiągnąć odpowiedź?',
+            hint: 'Poinformować o procedurze, podziękować',
+            example: 'Napisz oficjalną odpowiedź na petycję, która: (1) podziękuje mieszkańcom za zgłoszenie problemu i troskę o bezpieczeństwo, (2) potwierdzi odbiór petycji, (3) wyjaśni procedurę (opinie Policji i Starostwa), (4) zapewni o monitorowaniu sytuacji, (5) poinformuje, że decyzja zapadnie po otrzymaniu opinii.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Struktura pisma...',
+            hint: 'Jak zbudować oficjalną odpowiedź',
+            example: 'Odpowiedź powinna zawierać: nagłówek z danymi urzędu i adresatami, numer i datę petycji, podziękowanie, streszczenie problemu (1-2 zdania), opis podjętych działań (przekazanie do opinii), informację o terminie decyzji, uprzejme zakończenie, podpis Wójta.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Ton i wymagania...',
+            hint: 'Jak odpowiadać na petycję',
+            example: 'Ton: oficjalny, pełen szacunku, ale NIE obiecujący. NIE gwarantuj montażu progu (to zależy od opinii). NIE bagatelizuj problemu. Podkreśl, że bezpieczeństwo jest priorytetem. Odpowiedź musi być zgodna z ustawą o petycjach (termin 30 dni na odpowiedź).'
+          },
+          inputData: {
+            label: '📝 INFORMACJE DO ODPOWIEDZI',
+            placeholder: 'Dane o petycji i procedurze...',
+            hint: 'Co trzeba uwzględnić',
+            example: 'Tytuł petycji: "STOP rajdowi na Jesionowej - chcemy progu!"\nLokalizacja: ul. Jesionowa, przy numerze 18\nProblem: przekraczanie prędkości, zagrożenie dla dzieci, potrącenie psa\nPodjęte działania: przekazano do opinii Policji i Starostwa Powiatowego\nCzas na decyzję: po otrzymaniu opinii (ok. 30 dni)'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Petycje wymagają szczególnej uwagi - mieszkańcy korzystają z prawa konstytucyjnego. Określając rolę kierownika referatu i ton "szacunek bez obietnic", otrzymujesz odpowiedź profesjonalną, która nie podejmuje decyzji za instytucje opiniujące.'
+      }
+    ]
+  },
+
+  // ==========================================
+  // SEKCJA ChatGPT - PRACA Z OBRAZAMI I DANYMI
+  // ==========================================
+  {
+    id: 'gpt_analiza',
+    section: 'main',
+    category: 'Analiza Danych',
+    title: 'Analiza Wydatków Budżetowych',
+    description: 'Wyciąganie wniosków z danych liczbowych bez Excela.',
+    steps: [
+      {
+        title: 'Analiza wydatków sołectw',
+        instruction: 'Dział budżetu przekazał dane o wydatkach pięciu sołectw na różne kategorie: drogi, festyny, oświetlenie i inicjatywy społeczne. Zamiast ręcznie analizować liczby w Excelu, wklej dane tekstowo do ChatGPT i poproś o analizę, które sołectwo najwięcej inwestuje w wydarzenia społeczne.',
+        context: 'Dane z budżetów 5 sołectw (kwoty w złotych) dla kategorii: drogi, festyny, oświetlenie, inicjatywy społeczne',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi umieć analizować dane finansowe',
+            example: 'Jesteś analitykiem budżetowym specjalizującym się w finansach publicznych jednostek samorządu terytorialnego. Potrafisz analizować dane liczbowe i wyciągać praktyczne wnioski.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz dane...',
+            hint: 'Skąd pochodzą liczby i czego dotyczą',
+            example: 'Otrzymałem dane z wykonania budżetów funduszu sołeckiego w pięciu sołectwach gminy. Dane pokazują wydatki w czterech głównych kategoriach: drogi, festyny/wydarzenia, oświetlenie oraz inicjatywy społeczne (NGO, seniorzy, działalność). Chcę porównać priorytety wydatkowe.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co AI ma znaleźć w danych?',
+            hint: 'Jakie pytanie badawcze, jaki wniosek',
+            example: 'Przeanalizuj poniższe dane finansowe i odpowiedz na pytanie: które sołectwo relatywnie najwięcej inwestuje w wydarzenia i aktywności społeczne (łącznie festyny + inicjatywy społeczne)? Podaj konkretne kwoty i procenty.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Jak przedstawić wynik analizy?',
+            hint: 'Tabela, ranking, podsumowanie',
+            example: 'Przedstaw analizę w formie: (1) krótkie podsumowanie (2-3 zdania), (2) ranking sołectw od największych do najmniejszych wydatków na społeczność (z kwotami i %), (3) wniosek końcowy - które sołectwo jest najbardziej \"społecznie aktywne\" budżetowo.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Zasady analizy...',
+            hint: 'Jak interpretować, czego unikać',
+            example: 'Analizuj TYLKO podane dane, NIE domyślaj się ani nie dodawaj informacji. Liczeń procenty względem całkowitych wydatków każdego sołectwa. NIE oceniaj wartościująco ("dobrze/źle"). Używaj precyzyjnych liczb (zaokrąglaj do 2 miejsc po przecinku).'
+          },
+          inputData: {
+            label: '📝 DANE BUDŻETOWE DO ANALIZY',
+            placeholder: 'Wklej liczby...',
+            hint: 'Skopiuj dane w przystępnej formie tekstowej',
+            example: 'Sołectwo A: Drogi 3923,57 zł; Festyny 9814,22 zł; Oświetlenie 5110,00 zł; Mikrogranty NGO 2001,42 zł\nSołectwo B: Drogi 12488,01 zł; Festyny 1223,89 zł; Oświetlenie 7845,30 zł; Zajęcia seniorzy 4312,05 zł\nSołectwo C: Drogi 6509,43 zł; Festyny 3119,11 zł; Oświetlenie 2900,55 zł; Miejsca rekreacji 8701,00 zł'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** ChatGPT potrafi analizować dane tekstowe i wykonywać obliczenia. Kluczem jest wyraźne określenie pytania badawczego ("relatywnie najwięcej") i formatu odpowiedzi (ranking z %). Oszczędza to godziny pracy w Excelu.'
+      }
+    ]
+  },
+
+  // ==========================================
+  // SEKCJA EKSPERCI - DLA ZAAWANSOWANYCH
+  // ==========================================
+  {
+    id: 'expert_tlumacz',
+    section: 'main',
+    category: 'Komunikacja Międzynarodowa',
+    title: 'Tłumaczenia Urzędowe',
+    description: 'Obsługa cudzoziemców i korespondencji międzynarodowej.',
+    steps: [
+      {
+        title: 'Instrukcja dla cudzoziemca',
+        instruction: 'Do kancelarii przyszedł obywatel Ukrainy, który potrzebuje zaświadczenia o niezaleganiu z podatkiem od nieruchomości. Nie mówi po polsku. Musisz mu wyjaśnić zasady wypełnienia wniosku: drukowane litery, podpis, data, gdzie oddać formularz.',
+        context: 'Petent: obywatel Ukrainy, język: ukraiński lub angielski, dokument: wniosek o zaświadczenie podatkowe, wymogi: drukowane litery, podpis, data, miejsce złożenia: okienko nr 3',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać język ukraiński i angielski oraz procedury urzędowe',
+            example: 'Jesteś tłumaczem urzędowym posiadającym doświadczenie w obsłudze cudzoziemców w polskich urzędach. Znasz terminologię administracyjną w językach: polskim, ukraińskim, angielskim i rosyjskim.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz sytuację...',
+            hint: 'Kto przyszedł i czego potrzebuje',
+            example: 'Do kancelarii urzędu przyszła osoba narodowości ukraińskiej, która potrzebuje zaświadczenia o niezaleganiu z podatkiem od nieruchomości. Nie zna języka polskiego, komunikuje się po ukraińsku lub angielsku. Muszę wytłumaczyć procedurę wypełnienia wniosku.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Tłumaczenie instrukcji na ukraiński/angielski',
+            example: 'Przetłumacz poniższą instrukcję wypełnienia wniosku na język ukraiński ORAZ angielski. Instrukcja ma być prosta, zrozumiała i zawierać wszystkie kluczowe informacje.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Jak przedstawić tłumaczenie?',
+            hint: 'Dwie wersje językowe, punkty',
+            example: 'Przedstaw dwa tłumaczenia osobno:\n1. WERSJA UKRAIŃSKA - lista numerowana (4-5 punktów)\n2. WERSJA ANGIELSKA - lista numerowana (4-5 punktów)\nKażdy punkt: jedno proste zdanie w trybie rozkazującym ("Wypełnij...", "Podpisz...").'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Zasady tłumaczenia...',
+            hint: 'Język prosty, bez żargonu',
+            example: 'Używaj prostego języka, bez żargonu urzędniczego. Tłumaczenia muszą być DOSŁOWNE i PRECYZYJNE (nie literackie). NIE dodawaj informacji, których nie ma w oryginale. NIE używaj terminów prawniczych. Ton: pomocny, uprzejmy.'
+          },
+          inputData: {
+            label: '📝 POLSKA INSTRUKCJA DO PRZETŁUMACZENIA',
+            placeholder: 'Wklej tekst po polsku...',
+            hint: 'Oryginalna instrukcja',
+            example: 'Instrukcja wypełnienia wniosku:\n1. Proszę wypełnić ten formularz drukowanymi literami.\n2. Na dole strony potrzebny jest podpis i data.\n3. Wypełniony wniosek proszę złożyć w okienku nr 3.\n4. Zaświadczenie będzie gotowe za 3 dni robocze.'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** AI zna dziesiątki języków i potrafi tłumaczyć precyzyjnie. Określając "język prosty, bez żargonu" i "dosłowne tłumaczenie", otrzymujesz tekst zrozumiały dla cudzoziemca, a nie literacki przekład.'
+      }
+    ]
+  },
+
+  // ==========================================
+  // WIĘCEJ ChatGPT - OBRAZY I PLIKI
+  // ==========================================
+  {
+    id: 'gpt_plakat',
+    section: 'main',
+    category: 'Grafika AI',
+    title: 'Generowanie Plakatu',
+    description: 'Tworzenie grafik promocyjnych bez grafika.',
+    steps: [
+      {
+        title: 'Plakat na festyn rodzinny',
+        instruction: 'Gmina organizuje Festyn Rodzinny 15 czerwca w parku gminnym. Potrzebujesz prostego, kolorowego plakatu A4 do wydruku i udostępnienia w social mediach. Zamiast zatrudniać grafika, użyj ChatGPT (DALL-E) do wygenerowania grafiki.',
+        context: 'Wydarzenie: Festyn Rodzinny, data: 15 czerwca, miejsce: Park Gminny, grupa docelowa: rodziny z dziećmi',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi działać jak grafik',
+            example: 'Jesteś grafikiem specjalizującym się w projektowaniu materiałów promocyjnych dla wydarzeń lokalnych i gminnych.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz wydarzenie...',
+            hint: 'Charakter festynu, atmosfera',
+            example: 'Organizujemy rodzinny festyn gminny - radosne, kolorowe wydarzenie dla mieszkańców. Na festynie będą: stoiska z jedzeniem, dmuchańce dla dzieci, konkursy, występy lokalnych zespołów.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Jaka grafika ma powstać?',
+            hint: 'Co ma być na plakacie',
+            example: 'Wygeneruj prosty, kolorowy plakat A4 promujący Festyn Rodzinny. Plakat powinien przyciągać wzrok, być radosny i przyjazny dzieciom. Ma zawierać przestrzeń na dodanie tekstu (tytuł, data, miejsce).'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Opis elementów graficznych...',
+            hint: 'Co dokładnie ma być na obrazku',
+            example: 'Plakat w orientacji pionowej (A4). Główny element: wesoła ilustracja przedstawiająca park z balonikami, rodziców z dziećmi, stoiska z jedzeniem. Górna część: miejsce na tekst "FESTYN RODZINNY". Kolory: jasne, ciepłe, radosne (żółty, zielony, pomarańczowy). Styl: przyjazny, kreskówkowy, NIE zbyt dziecinny.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Czego unikać...',
+            hint: 'Styl, atmosfera, wymagania techniczne',
+            example: 'NIE używaj konkretnych logotypów ani znaków firmowych. Grafika ma być uniwersalna i ponadczasowa. Unikaj zbyt wielu szczegółów - plakat ma być czytelny z daleka. NIE umieszczaj tekstu wewnątrz obrazu (dodamy go później w Canvie lub Wordzie). Styl NIE może być infantylny.'
+          },
+          inputData: {
+            label: '📝 SZCZEGÓŁY DO WIZUALIZACJI',
+            placeholder: 'Co ma znaleźć się na grafice...',
+            hint: 'Kluczowe elementy wizualne',
+            example: 'Scena: park gminny z drzewami\nElementy: rodziny (dorośli + dzieci), balony, stoiska z jedzeniem, kolorowe namioty\nAtmosfera: słoneczny dzień, radość, wspólna zabawa\nKolory dominujące: ciepłe (żółty, zielony, pomarańczowy, niebieski)'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** ChatGPT (z DALL-E) potrafi generować obrazy na podstawie opisu tekstowego. Kluczem jest precyzyjne określenie stylu, kolorów i atmosfery. Zamiast płacić grafika, generujesz wersję roboczą w 30 sekund.'
+      }
+    ]
+  },
+  {
+    id: 'gpt_excel',
+    section: 'main',
+    category: 'Arkusze Kalkulacyjne',
+    title: 'Formuły Excel',
+    description: 'Pomoc w tworzeniu skomplikowanych formuł arkuszowych.',
+    steps: [
+      {
+        title: 'Formuła do analizy frekwencji',
+        instruction: 'Masz arkusz z listą 200 uczestników szkoleń (kolumna A: imię i nazwisko, kolumna B: obecność TAK/NIE). Potrzebujesz formuły, która policzy ile osób było obecnych, jaki to procent i wyświetli komunikat "Wysoka frekwencja" jeśli > 75%, albo "Niska frekwencja" jeśli <= 75%.',
+        context: 'Dane w Excelu: A2:A201 (nazwiska), B2:B201 (TAK/NIE), wynik w komórce D2',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać Excel i formuły',
+            example: 'Jesteś ekspertem od arkuszy kalkulacyjnych Excel, specjalizującym się w tworzeniu zaawansowanych formuł dla celów analitycznych i raportowania.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz problem...',
+            hint: 'Co jest w arkuszu i co musisz obliczyć',
+            example: 'Mam arkusz Excel z danymi o obecności uczestników szkoleń. W kolumnie A (wiersze 2-201) są nazwiska, w kolumnie B (wiersze 2-201) jest obecność zapisana jako "TAK" lub "NIE". Muszę obliczyć procent frekwencji i wyświetlić automatyczny komunikat.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Jaka formuła ma powstać?',
+            hint: 'Co dokładnie ma liczyć',
+            example: 'Napisz formułę Excel, która: (1) policzy liczbę osób z "TAK" w kolumnie B, (2) obliczy procent względem wszystkich 200 osób, (3) wyświetli "Wysoka frekwencja" jeśli procent > 75%, w przeciwnym razie "Niska frekwencja".'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Jak przedstawić rozwiązanie?',
+            hint: 'Kod formuły + wyjaśnienie',
+            example: 'Przedstaw odpowiedź w formie: (1) gotową formułę do skopiowania do komórki D2, (2) krok po kroku wyjaśnienie jak działa formuła, (3) przykład wyniku (np. "Wysoka frekwencja (82%)").'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Wymagania techniczne...',
+            hint: 'Wersja Excela, funkcje dozwolone',
+            example: 'Używaj TYLKO standardowych funkcji Excel dostępnych w wersji 2016 i nowszych (COUNTIF, IF, ROUND). NIE używaj Power Query ani VBA. Formuła musi działać po skopiowaniu do jednej komórki (bez pomocniczych kolumn). Procent zaokrąglij do 1 miejsca po przecinku.'
+          },
+          inputData: {
+            label: '📝 SZCZEGÓŁY ARKUSZA',
+            placeholder: 'Zakresy, warunki...',
+            hint: 'Konkretne lokalizacje danych',
+            example: 'Zakres z nazwiskami: A2:A201\nZakres z obecnością: B2:B201 (wartości: "TAK" lub "NIE")\nKomórka na wynik: D2\nWarunek: > 75% = "Wysoka frekwencja", <= 75% = "Niska frekwencja"\nFormat wyniku: tekst z procentem w nawiasie'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** ChatGPT zna składnię formuł Excel i potrafi budować złożone wyrażenia warunkowe. Zamiast godzin szukania w Google, otrzymujesz gotową formułę z wyjaśnieniem w 10 sekund. Oszczędzasz czas i uczysz się jednocześnie.'
+      }
+    ]
+  },
+
+  // ==========================================
+  // WIĘCEJ EKSPERTÓW - ZAAWANSOWANE SCENARIUSZE
+  // ==========================================
+  {
+    id: 'expert_mediacje',
+    section: 'main',
+    category: 'Rozwiązywanie Konfliktów',
+    title: 'Mediacje Sąsiedzkie',
+    description: 'Prowadzenie mediacji w sporach między mieszkańcami.',
+    steps: [
+      {
+        title: 'Scenariusz rozmowy mediacyjnej',
+        instruction: 'Dwóch sąsiadów (pan Nowak z nr 12 i pan Kowalski z nr 14) od miesięcy się kłócą o granicę działki i przycięcie drzew. Chcą mediacji w urzędzie. Jako pracownik mediatora musisz przygotować scenariusz spotkania: jak rozpocząć, jakie pytania zadać, jak prowadzić do porozumienia.',
+        context: 'Konflikt: spór graniczny + drzewa, uczestnicy: 2 sąsiadów, cel mediacji: porozumienie bez sądu, mediator: pracownik urzędu',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać mediację i psychologię konfliktu',
+            example: 'Jesteś certyfikowanym mediatorem społecznym specjalizującym się w konfliktach sąsiedzkich i sporach o granice nieruchomości. Posiadasz szkolenie z komunikacji mediacyjnej i rozwiązywania konfliktów.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz sytuację...',
+            hint: 'Jaki jest konflikt i kto uczestniczy',
+            example: 'Dwóch sąsiadów od miesięcy jest w ostrym konflikcie dotyczącym granic działek i drzew rosnących blisko granicy. Obaj są zdenerwowani, nie rozmawiają ze sobą, grożą sobie sądem. Zgodzili się na jedno spotkanie mediacyjne w urzędzie gminy.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Scenariusz spotkania krok po kroku',
+            example: 'Przygotuj szczegółowy scenariusz 60-minutowego spotkania mediacyjnego. Scenariusz powinien zawierać: etapy spotkania (otwarcie, wysłuchanie stron, poszukiwanie rozwiązań, podsumowanie), przykładowe pytania mediacyjne, techniki uspokajania emocji, propozycje kompromisów.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Struktura scenariusza...',
+            hint: 'Jak ułożyć plan mediacji',
+            example: 'Scenariusz podziel na 4 etapy (po 15 minut każdy). Każdy etap opisz tak:\n1. Nazwa etapu + cel\n2. Co mówi mediator (przykłady zdań)\n3. Jakie pytania zadać\n4. Na co uważać (pułapki, emocje)\n5. Spodziewany rezultat etapu'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Zasady mediacji...',
+            hint: 'Czego mediator nie może robić',
+            example: 'Mediator NIE rozstrzyga kto ma rację (to nie sąd). NIE narzuca rozwiązania. NIE ocenia ani nie krytykuje stron. Używaj komunikacji neutralnej, pytań otwartych. Pilnuj równowagi czasu - obie strony muszą móc się wypowiedzieć. Jeśli emocje wybuchną, przerwij i uspokój sytuację.'
+          },
+          inputData: {
+            label: '📝 SZCZEGÓŁY KONFLIKTU',
+            placeholder: 'Informacje o sporze...',
+            hint: 'Co wiesz o konflikcie',
+            example: 'Strony:\n- Pan Nowak (nr 12): twierdzi, że płot pana Kowalskiego stoi 30 cm na jego działce\n- Pan Kowalski (nr 14): uważa, że drzewa pana Nowaka rosną nad jego działką i niszczą mu dach\n\nStan: obaj grożą pozwem, nie rozmawiają, poziom emocji wysoki\nCel: porozumienie bez sądu'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Mediacja ma sprawdzoną strukturę. Określając AI jako mediatora i wymagając neutralności oraz pytań otwartych, otrzymujesz profesjonalny scenariusz oparty na najlepszych praktykach komunikacyjnych. To narzędzie real-time dla pracownika, który nie jest prawnikiem.'
+      }
+    ]
+  },
+  {
+    id: 'expert_dotacje',
+    section: 'main',
+    category: 'Pozyskiwanie Funduszy',
+    title: 'Wnioski o Dotacje',
+    description: 'Pomoc w pisaniu wniosków grantowych i aplikacji o dofinansowanie.',
+    steps: [
+      {
+        title: 'Opis projektu do wniosku',
+        instruction: 'Gmina aplikuje o dotację z programu "Czyste Powietrze" na termomodernizację budynku świetlicy wiejskiej w sołectwie Przykładowo. Musisz napisać sekcję "Opis projektu" (maksymalnie 3000 znaków) - cel, zakres prac, korzyści środowiskowe, grupa docelowa.',
+        context: 'Program: Czyste Powietrze, obiekt: świetlica wiejska, prace: docieplenie, wymiana okien, pompa ciepła, beneficjenci: mieszkańcy sołectwa (200 osób)',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać pisanie wniosków grantowych',
+            example: 'Jesteś specjalistą ds. pozyskiwania funduszy zewnętrznych w samorządach, z 10-letnim doświadczeniem w pisaniu skutecznych wniosków o dotacje unijne i krajowe w obszarze efektywności energetycznej.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz projekt...',
+            hint: 'Co chcecie zrobić i po co',
+            example: 'Gmina Przykładowo składa wniosek o dofinansowanie termomodernizacji świetlicy wiejskiej w sołectwie Przykładowo w ramach programu "Czyste Powietrze". Budynek ma 40 lat, jest nieocieplony, ma stare okna i ogrzewanie węglowe. Chcemy go zmodernizować ekologicznie.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Sekcja wniosku gotowa do wklejenia',
+            example: 'Napisz profesjonalną sekcję "Opis projektu" do wniosku o dotację (max. 3000 znaków). Opis powinien przekonać komisję oceniającą, że projekt jest potrzebny, realny, ekologiczny i przyniesie wymierne korzyści środowiskowe i społeczne.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Struktura opisu...',
+            hint: 'Jakie elementy muszą być',
+            example: 'Opis podziel na 4 akapity:\n1. CEL PROJEKTU (dlaczego to robimy, jaki problem rozwiązujemy)\n2. ZAKRES PRAC (co konkretnie będzie zrobione)\n3. KORZYŚCI ŚRODOWISKOWE (redukcja CO2, oszczędność energii)\n4. GRUPA DOCELOWA (kto skorzysta, ile osób)'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Styl i wymagania...',
+            hint: 'Język formalny, bez przesady, konkretnie',
+            example: 'Używaj języka formalnego, rzeczowego, ale NIE urzędniczego żargonu. Podawaj TYLKO prawdziwe, mierzalne dane (m², kWh, tony CO2, liczba osób). NIE przesadzaj ("rewolucyjny projekt"). Limit: 3000 znaków ze spacjami. Unikaj ogólników - bądź konkretny.'
+          },
+          inputData: {
+            label: '📝 DANE O PROJEKCIE',
+            placeholder: 'Parametry techniczne i społeczne...',
+            hint: 'Wszystkie informacje do uwzględnienia',
+            example: 'Obiekt: świetlica wiejska, powierzchnia 180 m², rok budowy 1985\nZakres prac: docieplenie ścian i dachu (styropian 15 cm), wymiana 12 okien na 3-szybowe, instalacja pompy ciepła powietrze-woda (12 kW), likwidacja kotła węglowego\nEfekt: redukcja zużycia energii o 60%, eliminacja 8 ton CO2 rocznie\nBeneficjenci: 200 mieszkańców sołectwa (wydarzenia lokalne, zebrania, zajęcia dla seniorów i dzieci)'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Wnioski o dotacje mają standardową strukturę i wymagają konkretnych danych. Określając rolę "specjalista grantowy" i wymagając mierzalnych efektów, otrzymujesz tekst pisany językiem komisji oceniających - zwiększasz szansę na pozytywną ocenę.'
+      }
+    ]
+  },
+
+  // ==========================================
+  // PLLuM - ZAAWANSOWANE (GWIAZDKA)
+  // ==========================================
+  {
+    id: 'pllum_zamowienia',
+    section: 'main',
+    category: 'Zamówienia Publiczne',
+    title: 'Ogłoszenie o Przetargu',
+    description: 'Uproszczenie języka ogłoszeń przetargowych dla małych firm.',
+    steps: [
+      {
+        title: 'Prosty opis przedmiotu zamówienia',
+        instruction: 'Gmina ogłasza przetarg na "dostawę usług cateringowych na rzecz realizacji projektu edukacyjnego współfinansowanego ze środków UE". Problem: małe lokalne firmy nie rozumieją, czego dokładnie urząd potrzebuje. Przepisz opis przedmiotu zamówienia prostym językiem (FAQ dla wykonawców).',
+        context: 'Zamówienie: catering na szkolenia (20 dni szkoleniowych, 25 osób/dzień, lunch + przerwy kawowe), wartość: ~40 000 zł, wykonawcy: lokalne małe firmy gastronomiczne',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać zamówienia publiczne i prosty język',
+            example: 'Jesteś specjalistą ds. zamówień publicznych z doświadczeniem w komunikacji z małymi i średnimi przedsiębiorstwami. Potrafisz tłumaczyć skomplikowany język prawny i proceduralny na prosty język biznesowy.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz sytuację...',
+            hint: 'Czego dotyczy przetarg i kto ma składać oferty',
+            example: 'Gmina ogłasza przetarg na catering dla szkoleń unijnych. Oryginalny opis jest pełen żargonu prawnego i formalizmów. Chcemy, żeby lokalne małe firmy gastronomiczne (pizzerie, restauracje, catering rodzinny) zrozumiały co dokładnie mają dostarczyć i złożyły oferty.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'FAQ dla wykonawców',
+            example: 'Przepisz techniczny opis przedmiotu zamówienia na prosty dokument FAQ (pytania i odpowiedzi) dla małych firm. FAQ ma wyjaśnić: czego potrzebujemy, ile razy, dla ilu osób, jakie wymagania, jak złożyć ofertę.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Jak zbudować FAQ...',
+            hint: 'Pytania + krótkie odpowiedzi',
+            example: 'Przedstaw FAQ jako listę 6-8 pytań z krótkimi odpowiedziami:\n1. Czego potrzebuje gmina?\n2. Ile razy i dla ilu osób?\n3. Co dokładnie mam dostarczyć na jeden dzień?\n4. Jakie są wymagania sanitarne/certyfikaty?\n5. Ile mogę za to dostać (szacunkowa wartość)?\n6. Jak złożyć ofertę i gdzie?\nKażda odpowiedź: maksymalnie 3-4 zdania.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Język i zasady...',
+            hint: 'Prosty język, bez zmiany wymogów prawnych',
+            example: 'Używaj prostego języka biznesowego, NIE prawniczego. Zamień "świadczenie usług" → "dostarczanie posiłków", "w ramach projektu współfinansowanego" → "na szkolenia unijne". NIE zmieniaj wymogów formalnych (certyfikaty, terminy). NIE dodawaj informacji, których nie ma w oryginale. Ton: pomocny, zachęcający.'
+          },
+          inputData: {
+            label: '📝 ORYGINALNY OPIS ZAMÓWIENIA',
+            placeholder: 'Wklej fragmenty ogłoszenia...',
+            hint: 'Techniczny opis do uproszczenia',
+            example: 'Przedmiot zamówienia: Świadczenie usług cateringowych w ramach realizacji projektu pn. "Kompetencje przyszłości" współfinansowanego ze środków Europejskiego Funduszu Społecznego Plus w okresie realizacji szkoleń.\n\nZakres: 20 dni szkoleniowych, 25 uczestników dziennie.\n\nWymogi: lunch (zupa + II danie + deser + napój), 2x przerwa kawowa (kawa, herbata, ciastka, owoce). Wykonawca musi posiadać aktualne badania sanitarne oraz ubezpieczenie OC. Dostawa do sali szkoleniowej w Urzędzie Gminy.'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Zamówienia publiczne są napisane językiem prawniczym, który odstrasza małe firmy. AI potrafi "przetłumaczyć" ten sam tekst na prosty język biznesowy, zwiększając konkurencję i oszczędzając budżet gminy. Kluczem jest pokazanie, że upraszczamy język, ale nie zmieniamy wymogów.'
+      }
+    ]
+  },
+  {
+    id: 'pllum_hr',
+    section: 'main',
+    category: 'HR i Onboarding',
+    title: 'Onboarding Nowego Pracownika',
+    description: '⭐ TRUDNE: Kompleksowy plan wdrożenia nowej osoby do zespołu.',
+    isStar: true,
+    steps: [
+      {
+        title: 'Plan onboardingu - 30 dni',
+        instruction: 'Do urzędu dołącza nowa osoba na stanowisko inspektora ds. środowiska. Nie zna procesów, systemów IT, ludzi. Musisz stworzyć szczegółowy plan wdrożenia na pierwsze 30 dni: kogo pozna, czego się nauczy, jakie dokumenty przeczyta, jakie systemy pozna. Plan powinien być podzielony na tygodnie.',
+        context: 'Nowy pracownik: inspektor ds. środowiska, doświadczenie: 2 lata w NGO (nie w administracji), czas wdrożenia: 30 dni, opiekun: kierownik wydziału',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać HR i onboarding w administracji',
+            example: 'Jesteś specjalistą HR w administracji publicznej z 8-letnim doświadczeniem w budowaniu programów onboardingowych dla nowych pracowników urzędów gmin i starostw.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz sytuację...',
+            hint: 'Kto dołącza, jakie ma doświadczenie, czego potrzebuje',
+            example: 'Do Wydziału Ochrony Środowiska dołącza nowa osoba na stanowisko inspektora. Ma doświadczenie w NGO, ale nigdy nie pracowała w administracji publicznej. Nie zna procedur urzędowych, systemów IT (EZD, e-urząd), ani struktury organizacyjnej.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Kompleksowy plan wdrożenia',
+            example: 'Stwórz szczegółowy 30-dniowy plan onboardingu dla nowego inspektora ds. środowiska. Plan powinien zapewnić, że po miesiącu osoba będzie znała: procedury, systemy, zespół, swoje obowiązki i będzie gotowa do samodzielnej pracy.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Struktura planu...',
+            hint: 'Podziel na tygodnie i dni',
+            example: 'Plan podziel na 4 tygodnie. Każdy tydzień opisz jako:\n- Tydzień 1 (Dni 1-5): cele tygodnia + szczegółowy harmonogram (dzień 1: co, z kim, gdzie)\n- Tydzień 2, 3, 4: analogicznie\n\nKażdy dzień: 3-5 konkretnych zadań/spotkań z czasem trwania. Na końcu: lista dokumentów do przeczytania i systemów do poznania.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Zasady tworzenia planu...',
+            hint: 'Realność czasowa, uwzględnienie emocji',
+            example: 'Plan musi być REALISTYCZNY - nie więcej niż 6 godzin aktywności dziennie (nowa osoba potrzebuje czasu na przyswojenie). Uwzględnij aspekty emocjonalne (lunch z zespołem, buddy system). NIE przeciążaj pierwszego dnia. Uwzględnij BHP i ochronę danych (obowiązkowe szkolenia). Ton: pomocny, empatyczny.'
+          },
+          inputData: {
+            label: '📝 INFORMACJE O STANOWISKU I WYDZIALE',
+            placeholder: 'Co nowa osoba musi poznać...',
+            hint: 'Systemy, procedury, ludzie, kompetencje',
+            example: 'Stanowisko: Inspektor ds. środowiska\nKluczowe obowiązki: kontrole firm, obsługa wniosków o pozwolenia środowiskowe, nadzór nad gospodarką odpadami\nSystemy IT: EZD (elektroniczny obieg dokumentów), e-urząd, bazy danych firm\nDokumenty: regulamin pracy, procedury kontroli, ustawa o ochronie środowiska (wybrane rozdziały)\nZespół: kierownik + 3 inspektorów + sekretariat\nOpiekun: Anna Kowalska (kierownik wydziału)'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Onboarding to złożony proces wymagający planowania. AI potrafi stworzyć strukturę 30-dniowego planu z realistycznym harmonogramem. Kluczem jest określenie roli "specjalista HR" i wymaganie realizmu czasowego oraz uwzględnienia emocji nowej osoby.'
+      }
+    ]
+  },
+  {
+    id: 'gpt_word',
+    section: 'main',
+    category: 'Generowanie Dokumentów',
+    title: 'Szablon Dokumentu Word',
+    description: 'Tworzenie gotowych szablonów dokumentów urzędowych.',
+    steps: [
+      {
+        title: 'Szablon uchwały rady gminy',
+        instruction: 'Rada Gminy regularnie podejmuje uchwały w różnych sprawach. Musisz przygotować uniwersalny szablon dokumentu uchwały w formacie, który można skopiować do Worda. Szablon powinien zawierać: nagłówek, podstawę prawną, treść uchwały (§1-§3), przepisy końcowe, miejsca na podpisy.',
+        context: 'Dokument: szablon uchwały Rady Gminy, format: gotowy tekst do skopiowania do MS Word',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać strukturę aktów prawnych samorządowych',
+            example: 'Jesteś radcą prawnym specjalizującym się w prawie samorządowym i tworzeniu aktów prawa miejscowego (uchwał, zarządzeń, regulaminów).'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz potrzebę...',
+            hint: 'Po co jest szablon i kto go użyje',
+            example: 'Sekretariat Rady Gminy potrzebuje uniwersalnego szablonu uchwały, który będzie wykorzystywany jako podstawa do tworzenia różnych uchwał (budżetowych, organizacyjnych, regulaminowych). Szablon musi być zgodny z wymogami prawnymi i łatwy do edycji.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Gotowy szablon do skopiowania',
+            example: 'Stwórz uniwersalny szablon uchwały Rady Gminy w formacie tekstowym gotowym do skopiowania do MS Word. Szablon powinien zawierać wszystkie wymagane elementy formalne i miejsca do wypełnienia (oznaczone [UZUPEŁNIJ]).'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Struktura dokumentu...',
+            hint: 'Kolejność elementów',
+            example: 'Szablon powinien zawierać w kolejności:\n1. Nagłówek (UCHWAŁA NR... RADY GMINY...)\n2. Data i miejsce posiedzenia\n3. Tytuł (w sprawie:...)\n4. Podstawa prawna\n5. Treść uchwały (§1, §2, §3...)\n6. Przepisy końcowe (§ o wejściu w życie)\n7. Miejsca na podpisy (Przewodniczący Rady)\n\nUżywaj właściwego formatowania (WIELKIE LITERY dla nagłówków, numeracja §).'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Wymagania prawne i formalne...',
+            hint: 'Co musi być, a czego nie może być',
+            example: 'Szablon MUSI być zgodny z wymogami ustawy o samorządzie gminnym. Używaj poprawnej terminologii prawnej. Miejsca do wypełnienia oznacz wyraźnie [UZUPEŁNIJ: opis]. NIE twórz konkretnej uchwały - to ma być SZABLON uniwersalny. Zachowaj profesjonalizm i formalizm właściwy dla aktów prawnych.'
+          },
+          inputData: {
+            label: '📝 ELEMENTY DO UWZGLĘDNIENIA',
+            placeholder: 'Wymagane pola...',
+            hint: 'Co musi znaleźć się w szablonie',
+            example: 'Elementy obowiązkowe:\n- Numer uchwały: [do wpisania]\n- Data posiedzenia: [do wpisania]\n- Podstawa prawna: art. ... ustawy o samorządzie gminnym\n- Tytuł sprawy: [do wpisania]\n- Paragrafy z treścią merytoryczną (3-5 §§)\n- Paragraf o wejściu w życie\n- Podpis Przewodniczącego Rady'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** AI zna strukturę dokumentów urzędowych i aktów prawnych. Określając rolę "radca prawny" i wymagając zgodności z ustawą, otrzymujesz profesjonalny szablon oszczędzający godziny pracy prawnika przy każdej nowej uchwale.'
+      }
+    ]
+  },
+  {
+    id: 'pllum_strategia',
+    section: 'main',
+    category: 'Planowanie Strategiczne',
+    title: 'Analiza SWOT',
+    description: '⭐ TRUDNE: Tworzenie analizy strategicznej dla gminy.',
+    isStar: true,
+    steps: [
+      {
+        title: 'Analiza SWOT dla rozwoju turystyki',
+        instruction: 'Gmina planuje rozwijać turystykę weekendową (agroturystyka, turystyka rowerowa). Musisz przygotować analizę SWOT jako punkt wyjścia do strategii. Masz dane: gmina 5000 mieszkańców, 3 gospodarstwa agroturystyczne, szlaki rowerowe Green Velo, bliskość dużego miasta (50 km), brak hotelu, starzejące się społeczeństwo.',
+        context: 'Cel: rozwój turystyki weekendowej, metoda: analiza SWOT, dane wejściowe: 5000 mieszkańców, 3 gospodarstwa, Green Velo, 50 km od miasta, bez hotelu',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać planowanie strategiczne i turystykę',
+            example: 'Jesteś konsultantem ds. rozwoju lokalnego specjalizującym się w planowaniu strategicznym dla małych gmin i rozwoju turystyki na terenach wiejskich. Posiadasz doświadczenie w tworzeniu analiz SWOT i strategii rozwoju.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz sytuację gminy...',
+            hint: 'Jaka jest gmina i co chce osiągnąć',
+            example: 'Gmina wiejska (5000 mieszkańców) położona 50 km od dużego miasta chce rozwijać turystykę weekendową jako sposób na ożywienie gospodarcze. Ma potencjał (szlaki Green Velo, 3 gospodarstwa agroturystyczne), ale też ograniczenia (starzejące się społeczeństwo, brak hotelu).'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Pełna analiza SWOT',
+            example: 'Przygotuj szczegółową analizę SWOT dla rozwoju turystyki weekendowej w gminie. Analiza powinna zawierać: mocne strony (5-7 punktów), słabe strony (5-7 punktów), szanse (5-7 punktów), zagrożenia (5-7 punktów). Każdy punkt z krótkim wyjaśnieniem (1-2 zdania).'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Struktura analizy...',
+            hint: 'Jak przedstawić SWOT',
+            example: 'Analiza SWOT w formie 4 sekcji:\n\n**MOCNE STRONY (Strengths)**\n1. [punkt] - wyjaśnienie\n2. [punkt] - wyjaśnienie\n...\n\n**SŁABE STRONY (Weaknesses)**\n...\n\n**SZANSE (Opportunities)**\n...\n\n**ZAGROŻENIA (Threats)**\n...\n\nNa końcu: krótkie podsumowanie strategiczne (3-4 zdania) - co robić z tą analizą.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Zasady analizy...',
+            hint: 'Realizm, konkretność, kontekst lokalny',
+            example: 'Analiza musi być REALISTYCZNA - opieraj się TYLKO na podanych danych, NIE wymyślaj informacji. Mocne/słabe strony to WEWNĘTRZNE cechy gminy. Szanse/zagrożenia to ZEWNĘTRZNE czynniki (trendy, konkurencja, polityka). Używaj konkretów, nie ogólników. Ton: profesjonalny, strategiczny, ale zrozumiały dla radnych bez wykształcenia ekonomicznego.'
+          },
+          inputData: {
+            label: '📝 DANE O GMINIE',
+            placeholder: 'Fakty do analizy...',
+            hint: 'Co wiesz o gminie',
+            example: 'DANE O GMINIE:\n- Liczba mieszkańców: 5000\n- Odległość od dużego miasta: 50 km\n- Infrastruktura: 3 gospodarstwa agroturystyczne, szlaki rowerowe Green Velo przechodzą przez gminę\n- Braki: brak hotelu, słaba promocja, brak restauracji\n- Społeczeństwo: starzejące się, emigracja młodych\n- Atuty: czyste środowisko, lasy, rzeka\n- Konkurencja: sąsiednie gminy też rozwijają turystykę'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Analiza SWOT to standardowe narzędzie strategiczne. AI potrafi uporządkować rozproszone informacje w strukturę SWOT, odróżniając czynniki wewnętrzne od zewnętrznych. Określając "konsultant strategiczny" i wymagając realizmu, otrzymujesz analizę na poziomie płatnej konsultacji.'
+      }
+    ]
   }
 ];
-
-// Uwaga: To jest 100% kompletna wersja z podstawowymi ćwiczeniami.
-// Pozostałe ćwiczenia (Fake News, Awaria, Festyn, itd.) mogą być dodane w takiej samej strukturze.
-// Każde nowe ćwiczenie wymaga obiektu z: id, section, category, title, description, steps[]
-// Każdy step wymaga: title, instruction, context, promptBuilder (6 pól), learningNote
 
 // --- KOMPONENTY REACT ---
 
@@ -1177,41 +1993,17 @@ const TrainingApp = () => {
           <section className="section-card">
             <div className="section-head">
               <div>
-                <p className="section-eyebrow">1. Rozgrzewka - Podstawy</p>
-                <h2>Twoje pierwsze prompty</h2>
+                <p className="section-eyebrow">Wszystkie ćwiczenia</p>
+                <h2>Praktyczne scenariusze z pracy urzędu</h2>
               </div>
-              <span className="section-tag">Start tutaj</span>
+              <span className="section-tag">19 ćwiczeń</span>
             </div>
             <p className="section-intro">
-              Jeśli nigdy nie używałeś AI w pracy, zacznij od tych ćwiczeń. Nauczysz się podstawowej struktury promptu
-              i zrozumiesz, dlaczego kolejność elementów ma znaczenie.
-            </p>
-            <div className="card-grid">
-              {exercises.filter(e => e.section === 'basic').map(ex => (
-                <Card
-                  key={ex.id}
-                  item={ex}
-                  isCompleted={completedExercises.includes(ex.id)}
-                  onClick={() => setActiveExercise(ex)}
-                />
-              ))}
-            </div>
-          </section>
-
-          <section className="section-card">
-            <div className="section-head">
-              <div>
-                <p className="section-eyebrow">2. Komunikacja z mieszkańcami</p>
-                <h2>Trudne sytuacje w urzędzie</h2>
-              </div>
-              <span className="section-tag">PLLuM</span>
-            </div>
-            <p className="section-intro">
-              Emocjonalne skargi, język prawniczy, posty do social mediów - naucz się budować prompty,
-              które pomogą Ci w najtrudniejszych sytuacjach komunikacyjnych.
+              Od prostych poprawek tekstu, przez trudną komunikację z mieszkańcami, analizę danych, po zaawansowane scenariusze
+              (mediacje, wnioski o dotacje, planowanie strategiczne). Każde ćwiczenie uczy budowania skutecznych promptów krok po kroku.
             </p>
             <div className="card-grid card-grid--three">
-              {exercises.filter(e => e.section === 'main').map(ex => (
+              {exercises.map(ex => (
                 <Card
                   key={ex.id}
                   item={ex}
