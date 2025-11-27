@@ -1155,7 +1155,7 @@ const exercises = [
   // ==========================================
   {
     id: 'gpt_analiza',
-    section: 'gpt',
+    section: 'main',
     category: 'Analiza Danych',
     title: 'Analiza Wydatków Budżetowych',
     description: 'Wyciąganie wniosków z danych liczbowych bez Excela.',
@@ -1212,7 +1212,7 @@ const exercises = [
   // ==========================================
   {
     id: 'expert_tlumacz',
-    section: 'extra',
+    section: 'main',
     category: 'Komunikacja Międzynarodowa',
     title: 'Tłumaczenia Urzędowe',
     description: 'Obsługa cudzoziemców i korespondencji międzynarodowej.',
@@ -1269,7 +1269,7 @@ const exercises = [
   // ==========================================
   {
     id: 'gpt_plakat',
-    section: 'gpt',
+    section: 'main',
     category: 'Grafika AI',
     title: 'Generowanie Plakatu',
     description: 'Tworzenie grafik promocyjnych bez grafika.',
@@ -1322,7 +1322,7 @@ const exercises = [
   },
   {
     id: 'gpt_excel',
-    section: 'gpt',
+    section: 'main',
     category: 'Arkusze Kalkulacyjne',
     title: 'Formuły Excel',
     description: 'Pomoc w tworzeniu skomplikowanych formuł arkuszowych.',
@@ -1379,7 +1379,7 @@ const exercises = [
   // ==========================================
   {
     id: 'expert_mediacje',
-    section: 'extra',
+    section: 'main',
     category: 'Rozwiązywanie Konfliktów',
     title: 'Mediacje Sąsiedzkie',
     description: 'Prowadzenie mediacji w sporach między mieszkańcami.',
@@ -1432,7 +1432,7 @@ const exercises = [
   },
   {
     id: 'expert_dotacje',
-    section: 'extra',
+    section: 'main',
     category: 'Pozyskiwanie Funduszy',
     title: 'Wnioski o Dotacje',
     description: 'Pomoc w pisaniu wniosków grantowych i aplikacji o dofinansowanie.',
@@ -1596,7 +1596,7 @@ const exercises = [
   },
   {
     id: 'gpt_word',
-    section: 'gpt',
+    section: 'main',
     category: 'Generowanie Dokumentów',
     title: 'Szablon Dokumentu Word',
     description: 'Tworzenie gotowych szablonów dokumentów urzędowych.',
@@ -1993,89 +1993,17 @@ const TrainingApp = () => {
           <section className="section-card">
             <div className="section-head">
               <div>
-                <p className="section-eyebrow">1. Rozgrzewka - Podstawy</p>
-                <h2>Twoje pierwsze prompty</h2>
+                <p className="section-eyebrow">Wszystkie ćwiczenia</p>
+                <h2>Praktyczne scenariusze z pracy urzędu</h2>
               </div>
-              <span className="section-tag">Start tutaj</span>
+              <span className="section-tag">19 ćwiczeń</span>
             </div>
             <p className="section-intro">
-              Jeśli nigdy nie używałeś AI w pracy, zacznij od tych ćwiczeń. Nauczysz się podstawowej struktury promptu
-              i zrozumiesz, dlaczego kolejność elementów ma znaczenie.
-            </p>
-            <div className="card-grid">
-              {exercises.filter(e => e.section === 'basic').map(ex => (
-                <Card
-                  key={ex.id}
-                  item={ex}
-                  isCompleted={completedExercises.includes(ex.id)}
-                  onClick={() => setActiveExercise(ex)}
-                />
-              ))}
-            </div>
-          </section>
-
-          <section className="section-card">
-            <div className="section-head">
-              <div>
-                <p className="section-eyebrow">2. Komunikacja z mieszkańcami</p>
-                <h2>Trudne sytuacje w urzędzie</h2>
-              </div>
-              <span className="section-tag">PLLuM</span>
-            </div>
-            <p className="section-intro">
-              Emocjonalne skargi, język prawniczy, posty do social mediów - naucz się budować prompty,
-              które pomogą Ci w najtrudniejszych sytuacjach komunikacyjnych.
+              Od prostych poprawek tekstu, przez trudną komunikację z mieszkańcami, analizę danych, po zaawansowane scenariusze
+              (mediacje, wnioski o dotacje, planowanie strategiczne). Każde ćwiczenie uczy budowania skutecznych promptów krok po kroku.
             </p>
             <div className="card-grid card-grid--three">
-              {exercises.filter(e => e.section === 'main').map(ex => (
-                <Card
-                  key={ex.id}
-                  item={ex}
-                  isCompleted={completedExercises.includes(ex.id)}
-                  onClick={() => setActiveExercise(ex)}
-                />
-              ))}
-            </div>
-          </section>
-
-          <section className="section-card">
-            <div className="section-head">
-              <div>
-                <p className="section-eyebrow">3. ChatGPT - Obrazy, Pliki, Dane</p>
-                <h2>Zaawansowane możliwości AI</h2>
-              </div>
-              <span className="section-tag">ChatGPT</span>
-            </div>
-            <p className="section-intro">
-              ChatGPT to nie tylko tekst - potrafi generować obrazy (DALL-E), analizować dane, tworzyć formuły Excel
-              i pomagać w tworzeniu dokumentów. Poznaj możliwości, które oszczędzą Ci godzin pracy.
-            </p>
-            <div className="card-grid card-grid--three">
-              {exercises.filter(e => e.section === 'gpt').map(ex => (
-                <Card
-                  key={ex.id}
-                  item={ex}
-                  isCompleted={completedExercises.includes(ex.id)}
-                  onClick={() => setActiveExercise(ex)}
-                />
-              ))}
-            </div>
-          </section>
-
-          <section className="section-card">
-            <div className="section-head">
-              <div>
-                <p className="section-eyebrow">4. Dla Ekspertów</p>
-                <h2>Zaawansowane scenariusze</h2>
-              </div>
-              <span className="section-tag">Zaawansowane</span>
-            </div>
-            <p className="section-intro">
-              Złożone sytuacje wymagające szczególnych umiejętności: mediacje, wnioski grantowe, komunikacja międzynarodowa.
-              Prompty dla profesjonalistów, którzy chcą wykorzystać pełnię możliwości AI.
-            </p>
-            <div className="card-grid card-grid--three">
-              {exercises.filter(e => e.section === 'extra').map(ex => (
+              {exercises.map(ex => (
                 <Card
                   key={ex.id}
                   item={ex}
