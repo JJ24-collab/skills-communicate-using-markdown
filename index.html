@@ -490,7 +490,7 @@ const exercises = [
   // ==========================================
   {
     id: 'basic_1',
-    section: 'basic',
+    section: 'warmup',
     category: 'Rozgrzewka',
     title: 'Korektor Tekstu',
     description: 'Najprostsze zastosowanie: poprawianie błędów ortograficznych i literówek.',
@@ -587,7 +587,7 @@ const exercises = [
   },
   {
     id: 'basic_2',
-    section: 'basic',
+    section: 'warmup',
     category: 'Rozgrzewka',
     title: 'Proste Pismo Urzędowe',
     description: 'Napisanie podania o urlop lub wewnętrznego zaproszenia.',
@@ -886,7 +886,7 @@ const exercises = [
   // ==========================================
   {
     id: 'pllum_festyn',
-    section: 'main',
+    section: 'warmup',
     category: 'Kreatywność',
     title: 'Organizacja Festynu',
     description: 'Tworzenie haseł promocyjnych i przemówień na gminne wydarzenia.',
@@ -992,7 +992,7 @@ const exercises = [
   },
   {
     id: 'pllum_awaria',
-    section: 'main',
+    section: 'warmup',
     category: 'Zarządzanie Kryzysem',
     title: 'Komunikat o Awarii',
     description: 'Szybkie informowanie mieszkańców o awariach infrastruktury.',
@@ -1155,7 +1155,7 @@ const exercises = [
   // ==========================================
   {
     id: 'gpt_analiza',
-    section: 'main',
+    section: 'chatgpt',
     category: 'Analiza Danych',
     title: 'Analiza Wydatków Budżetowych',
     description: 'Wyciąganie wniosków z danych liczbowych bez Excela.',
@@ -1269,7 +1269,7 @@ const exercises = [
   // ==========================================
   {
     id: 'gpt_plakat',
-    section: 'main',
+    section: 'chatgpt',
     category: 'Grafika AI',
     title: 'Generowanie Plakatu',
     description: 'Tworzenie grafik promocyjnych bez grafika.',
@@ -1322,7 +1322,7 @@ const exercises = [
   },
   {
     id: 'gpt_excel',
-    section: 'main',
+    section: 'chatgpt',
     category: 'Arkusze Kalkulacyjne',
     title: 'Formuły Excel',
     description: 'Pomoc w tworzeniu skomplikowanych formuł arkuszowych.',
@@ -1542,7 +1542,7 @@ const exercises = [
   },
   {
     id: 'pllum_hr',
-    section: 'main',
+    section: 'expert',
     category: 'HR i Onboarding',
     title: 'Onboarding Nowego Pracownika',
     description: '⭐ TRUDNE: Kompleksowy plan wdrożenia nowej osoby do zespołu.',
@@ -1596,7 +1596,7 @@ const exercises = [
   },
   {
     id: 'gpt_word',
-    section: 'main',
+    section: 'chatgpt',
     category: 'Generowanie Dokumentów',
     title: 'Szablon Dokumentu Word',
     description: 'Tworzenie gotowych szablonów dokumentów urzędowych.',
@@ -1649,7 +1649,7 @@ const exercises = [
   },
   {
     id: 'pllum_strategia',
-    section: 'main',
+    section: 'expert',
     category: 'Planowanie Strategiczne',
     title: 'Analiza SWOT',
     description: '⭐ TRUDNE: Tworzenie analizy strategicznej dla gminy.',
@@ -1698,6 +1698,279 @@ const exercises = [
           }
         },
         learningNote: '💡 **Dlaczego to działa?** Analiza SWOT to standardowe narzędzie strategiczne. AI potrafi uporządkować rozproszone informacje w strukturę SWOT, odróżniając czynniki wewnętrzne od zewnętrznych. Określając "konsultant strategiczny" i wymagając realizmu, otrzymujesz analizę na poziomie płatnej konsultacji.'
+      }
+    ]
+  },
+
+  // ==========================================
+  // ELEVENLABS - GENEROWANIE GŁOSU
+  // ==========================================
+  {
+    id: 'elevenlabs_radio',
+    section: 'media',
+    category: 'Komunikacja Głosowa',
+    title: 'Komunikat Głosowy dla Radia',
+    description: 'Tworzenie skryptu nagrania dla lokalnego radia.',
+    steps: [
+      {
+        title: 'Nagranie informacji o utrudnieniach',
+        instruction: 'Radio lokalne codziennie nadaje komunikaty od gminy o godzinie 7:00. Jutro od 8:00 do 16:00 będą utrudnienia na ul. Głównej (remont wodociągu). Musisz przygotować tekst komunikatu (30-45 sekund), który potem nagrasz w ElevenLabs i wyślesz do radia.',
+        context: 'Kanał: radio lokalne, czas: 30-45s, temat: utrudnienia drogowe, cel: poinformować mieszkańców jadących do pracy',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać język radiowy',
+            example: 'Jesteś copywriterem radiowym specjalizującym się w tworzeniu komunikatów informacyjnych dla lokalnych rozgłośni i gminnych audycji.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz sytuację...',
+            hint: 'Kto słucha, o której godzinie, po co',
+            example: 'Radio lokalne nadaje codzienny komunikat od gminy o godzinie 7:00, kiedy mieszkańcy jadą do pracy. Jutro będą utrudnienia na głównej drodze przez miejscowość. Muszę przygotować tekst, który nagramy głosem AI w ElevenLabs.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Tekst do nagrania głosowego',
+            example: 'Napisz tekst komunikatu radiowego (30-45 sekund czytania normalnym tempem) informującego o utrudnieniach drogowych. Tekst musi być klarowny, spokojny, łatwy do zrozumienia w aucie podczas jazdy.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Jak zbudować komunikat?',
+            hint: 'Struktura dla radia',
+            example: 'Komunikat powinien zawierać:\n1. Otwarcie ("Urząd Gminy informuje...")\n2. Co się dzieje i gdzie (konkretna lokalizacja)\n3. Kiedy (dzień, godziny)\n4. Jak objechać (trasa alternatywna)\n5. Przeprosiny za niedogodności\n\nKażde zdanie krótkie (max 12 słów). Łącznie 5-7 zdań.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Wymagania dla głosu AI...',
+            hint: 'Prosty język, brak trudnych słów',
+            example: 'Ton: spokojny, informacyjny, NIE alarmujący. Używaj PROSTYCH słów bez trudnych nazw ulic (zamiast "ul. Marszałka Józefa Piłsudskiego" → "główna droga przez centrum"). NIE używaj skrótów. Tekst musi być łatwy do przeczytania przez lektor AI (bez trudnych połączeń spółgłoskowych). Czas: 30-45 sekund (ok. 90-120 słów).'
+          },
+          inputData: {
+            label: '📝 INFORMACJE DO KOMUNIKATU',
+            placeholder: 'Fakty...',
+            hint: 'Co, gdzie, kiedy, objazd',
+            example: 'Ulica: Główna (przez centrum miejscowości)\nTermin: jutro (środa 15 stycznia) od 8:00 do 16:00\nPowód: remont wodociągu\nObjazd: ul. Polna i ul. Krótka\nUtrudnienie: droga całkowicie zamknięta\nKontakt w razie pytań: Urząd Gminy, tel. 123-456-789'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** ElevenLabs najlepiej radzi sobie z prostym, naturalnym językiem. Określając wymóg "krótkie zdania, proste słowa" i podając strukturę radiową, otrzymujesz tekst gotowy do wklejenia w ElevenLabs i natychmiastowego nagrania bez poprawek.'
+      }
+    ]
+  },
+  {
+    id: 'elevenlabs_film',
+    section: 'media',
+    category: 'Komunikacja Głosowa',
+    title: 'Lektor do Filmu Promocyjnego',
+    description: 'Tworzenie profesjonalnego voice-over do wideo.',
+    steps: [
+      {
+        title: 'Narracja do filmu o gminie',
+        instruction: 'Gmina przygotowała 90-sekundowy film promocyjny z ujęciami drona (pola, las, rzeka, rynek, szkoła, plac zabaw). Potrzebujesz tekstu lektora, który będzie w tle. Ton: ciepły, zachęcający, pokazujący gminę jako idealne miejsce do życia dla rodzin. Nagrasz go w ElevenLabs.',
+        context: 'Film: promocyjny 90s, ujęcia: natura + infrastruktura, grupa docelowa: młode rodziny rozważające przeprowadzkę',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać język reklamowy',
+            example: 'Jesteś copywriterem specjalizującym się w narracjach do filmów promocyjnych dla gmin i miast. Tworzysz teksty ciepłe, autentyczne i przekonujące, które przyciągają nowych mieszkańców.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz film...',
+            hint: 'Co widać na filmie, dla kogo',
+            example: 'Przygotowaliśmy film promocyjny gminy z ujęciami z drona: pola, lasy, rzeka, rynek, nowa szkoła, place zabaw. Film ma zachęcić młode rodziny z dużego miasta (50 km stąd) do przeprowadzki. Potrzebujemy ciepłej narracji lektora w tle.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Tekst voice-over do wideo',
+            example: 'Napisz tekst lektora do 90-sekundowego filmu promocyjnego gminy. Narracja ma być ciepła, rodzinna, pokazująca korzyści życia na wsi blisko miasta. Tekst musi pasować do ujęć: natura → infrastruktura → społeczność.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Struktura narracji...',
+            hint: 'Podział na części filmowe',
+            example: 'Tekst podziel na 3 części (po 30 sekund każda):\n\nCZĘŚĆ 1 (0-30s, ujęcia natury): otwarcie - spokój, natura, przestrzeń\nCZĘŚĆ 2 (30-60s, infrastruktura): nowoczesność - szkoła, drogi, place zabaw\nCZĘŚĆ 3 (60-90s, ludzie/atmosfera): społeczność - wydarzenia, sąsiedzi, życie\n\nKażda część: 3-4 krótkie zdania. Zakończenie: call to action ("Odwiedź nas...")'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Ton i język...',
+            hint: 'Autentyczność, ciepło, bez kiczu',
+            example: 'Ton: ciepły, autentyczny, NIE sztucznie entuzjastyczny. Używaj słów "dom", "rodzina", "spokój", "natura", "bezpieczeństwo". NIE używaj przesadnych określeń ("raj na ziemi"). NIE używaj statystyk ani liczb. Język prosty, naturalny - jak rozmowa z przyjacielem. Łącznie ok. 200-220 słów (90 sekund w normalnym tempie).'
+          },
+          inputData: {
+            label: '📝 INFORMACJE O GMINIE',
+            placeholder: 'Atuty do uwzględnienia...',
+            hint: 'Co pokazać w narracji',
+            example: 'Atuty gminy:\n- 50 km od dużego miasta (dojazd)\n- Czyste powietrze, lasy, rzeka\n- Nowa szkoła podstawowa (2022)\n- Nowe place zabaw i siłownie zewnętrzne\n- Aktywna społeczność (festyny, warsztaty)\n- Niskie ceny domów\n- Dobra komunikacja (autobus co godzinę do miasta)\n\nGrupa docelowa: rodziny z małymi dziećmi (30-40 lat), pracujące zdalnie lub dojeżdżające'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Dobra narracja filmowa łączy obraz z emocjami. Określając strukturę 3-częściową (natura→infrastruktura→ludzie) i ton "autentyczny, NIE przesadzony", otrzymujesz tekst, który brzmi profesjonalnie w ElevenLabs bez robienia wrażenia taniego marketingu.'
+      }
+    ]
+  },
+  {
+    id: 'elevenlabs_audiobook',
+    section: 'media',
+    category: 'Dostępność Cyfrowa',
+    title: 'Audiobook z Regulaminu',
+    description: 'Tworzenie wersji audio dokumentów dla osób niewidomych.',
+    steps: [
+      {
+        title: 'Regulamin nagrany głosem',
+        instruction: 'Rada Gminy przyjęła "Regulamin korzystania z sali gimnastycznej". Dokument ma 8 stron gęstego tekstu prawniczego. Osoba niewidoma dzwoni do urzędu z prośbą o dostępną wersję. Musisz przepisać regulamin na wersję "do słuchania" - prostszą, bez zbędnych formalizmów, którą potem nagrasz w ElevenLabs.',
+        context: 'Dokument: regulamin 8 stron, odbiorca: osoba niewidoma, format docelowy: audio w ElevenLabs',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać dostępność cyfrową',
+            example: 'Jesteś specjalistą ds. dostępności cyfrowej w administracji publicznej, który adaptuje dokumenty urzędowe dla osób z niepełnosprawnościami. Znasz standardy WCAG i dobre praktyki audioopisów.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz problem...',
+            hint: 'Dlaczego potrzebna jest wersja audio',
+            example: 'Osoba niewidoma chce korzystać z sali gimnastycznej w godzinach popołudniowych, ale nie może przeczytać regulaminu. Dokument ma 8 stron tekstu prawniczego z paragrafami, podpunktami i odniesieniami do ustaw. Muszę stworzyć wersję audio w ElevenLabs - zrozumiałą i łatwą do słuchania.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Wersja audio-friendly regulaminu',
+            example: 'Przepisz 8-stronicowy regulamin korzystania z sali gimnastycznej na wersję przyjazną dla audiobooka nagrywanego w ElevenLabs. Uprość język, usuń zbędne formalizmy, zachowaj wszystkie ważne zasady i obowiązki.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Jak zbudować wersję audio?',
+            hint: 'Struktura dla słuchacza',
+            example: 'Wersja audio powinna zawierać:\n1. Krótkie intro ("To jest regulamin...")\n2. Sekcje nazwane słowami, nie numerami ("Pierwsze: Kto może korzystać", "Drugie: Zasady rezerwacji")\n3. Listy czytane naturalnie ("musisz: po pierwsze..., po drugie...", zamiast "a), b), c)")\n4. Zakończenie ("To koniec regulaminu")\n\nBez przypisów, bez odniesień do paragrafów ustaw. Maksymalnie 5 minut słuchania (ok. 700-800 słów).'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Zasady adaptacji...',
+            hint: 'Co zachować, co uprościć',
+            example: 'Zachowaj WSZYSTKIE istotne zasady i zakazy (bezpieczeństwo, koszty, kary). Uprość język prawniczy ("w drodze decyzji" → "urząd zdecyduje"). Usuń zbędne formalizmy ("niniejszy", "w tym zakresie"). NIE dodawaj nowych reguł. NIE pomijaj kar/konsekwencji. Tekst musi być zgodny z oryginałem merytorycznie, ale łatwiejszy w odbiorze.'
+          },
+          inputData: {
+            label: '📝 ORYGINALNY REGULAMIN',
+            placeholder: 'Wklej fragmenty regulaminu...',
+            hint: 'Kluczowe fragmenty do adaptacji',
+            example: 'Fragmenty regulaminu:\n\n§1. Z sali gimnastycznej mogą korzystać: a) mieszkańcy gminy, b) osoby prowadzące działalność na terenie gminy, c) grupy zorganizowane po uzyskaniu zgody.\n\n§3. Rezerwacji dokonuje się drogą elektroniczną za pośrednictwem platformy e-urząd nie później niż 48h przed terminem.\n\n§7. Zabrania się: wnoszenia alkoholu, palenia tytoniu, używania sali bez calców, pozostawiania dzieci bez opieki.\n\n§12. W przypadku zniszczenia sprzętu użytkownik zobowiązany jest do naprawy na własny koszt lub zapłaty równowartości szkody.'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Dokumenty prawne są trudne do słuchania. Określając "uprość język, nazwij sekcje słowami, nie numerami" i wymagając zachowania wszystkich zasad, otrzymujesz tekst, który ElevenLabs nagra w sposób zrozumiały dla osoby niewidomej bez utraty treści merytorycznej.'
+      }
+    ]
+  },
+
+  // ==========================================
+  // SUNO - GENEROWANIE MUZYKI
+  // ==========================================
+  {
+    id: 'suno_hymn',
+    section: 'media',
+    category: 'Treści Kreatywne',
+    title: 'Hymn Jubileuszowy Gminy',
+    description: 'Tworzenie tekstu piosenki na uroczystości gminne.',
+    steps: [
+      {
+        title: 'Piosenka na 100-lecie gminy',
+        instruction: 'Gmina obchodzi w tym roku 100-lecie nadania praw miejskich. Na uroczystości w czerwcu chcecie wykonać specjalną pieśń o historii i dumie lokalnej. Musisz stworzyć tekst (2 zwrotki + refren), który potem wkleisz do Suno aby wygenerowało muzykę (styl: polskie piosenki patriotyczne, folk).',
+        context: 'Okazja: 100-lecie praw miejskich, styl muzyczny: folk/patriotyczna, zastosowanie: uroczystość z udziałem władz i mieszkańców',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać pisanie tekstów piosenek',
+            example: 'Jesteś autorem tekstów piosenek patriotycznych i okolicznościowych, specjalizującym się w hymnach lokalnych, pieśniach gminnych i utworach na uroczystości samorządowe.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz sytuację...',
+            hint: 'Jakie święto, jaka atmosfera',
+            example: 'Gmina Przykładowo obchodzi 100-lecie nadania praw miejskich. Uroczystość odbędzie się na rynku w obecności władz wojewódzkich, mieszkańców (ok. 500 osób) i zaproszonych gości. Chcemy wykonać specjalnie skomponowaną pieśń o historii gminy, wartościach i dumie lokalnej.'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Tekst piosenki do Suno',
+            example: 'Napisz tekst pieśni jubileuszowej dla gminy Przykładowo (100-lecie). Tekst powinien składać się z 2 zwrotek (po 4 wersy) + refrenu (4 wersy powtarzane 2x). Ton: podniosły, ale NIE patetyczny. Muzyka będzie w stylu polskiego folku/piosenki patriotycznej, więc tekst musi być rytmiczny i łatwy do zaśpiewania.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Struktura piosenki...',
+            hint: 'Zwrotki, refren, układ',
+            example: 'Struktura:\n\nZWROTKA 1 (4 wersy po 8-10 sylab)\n[o historii, korzeniach]\n\nREFREN (4 wersy po 8-10 sylab)\n[o dumie, przynależności, powtarzalny]\n\nZWROTKA 2 (4 wersy po 8-10 sylab)\n[o teraźniejszości, przyszłości]\n\nREFREN (powtórka)\n\nWszystkie wersy rymowane (AABB lub ABAB). Łącznie 16 wersów.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Ton i styl...',
+            hint: 'Jak ma brzmieć, czego unikać',
+            example: 'Ton: podniosły, godny, ale NIE patetyczny ani kiczowaty. Używaj słów: dom, ziemia, korzenie, wspólnota, tradycja, przyszłość. NIE używaj: "ojczyzna mała", "bohaterowie", "wielka przyszłość" (zbyt patetyczne). Unikaj trudnych słów - ma być łatwe do zaśpiewania przez chór amatorski. NIE nawiązuj do polityki. Muzyka w Suno: "polish folk ballad, patriotic".'
+          },
+          inputData: {
+            label: '📝 INFORMACJE O GMINIE',
+            placeholder: 'Historia, symbole...',
+            hint: 'Co uwzględnić w tekście',
+            example: 'Gmina Przykładowo:\n- Prawa miejskie: 1925 rok\n- Położenie: wśród pól i lasów, nad rzeką Przykładówką\n- Słynie z: rolnictwa, sąsiedzkiej życzliwości, festynów\n- Symbol: stary dąb na rynku (200 lat)\n- Dewiza: "Z tradycją w przyszłość"\n- Wartości: pracowitość, wspólnota, szacunek dla korzeni'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Suno generuje muzykę na podstawie tekstu i opisu stylu. Określając strukturę rytmiczną (8-10 sylab), schemat rymów i styl muzyczny ("polish folk ballad"), otrzymujesz tekst, który Suno przekształci w profesjonalnie brzmiącą pieśń bez potrzeby zatrudniania kompozytora.'
+      }
+    ]
+  },
+  {
+    id: 'suno_film_music',
+    section: 'media',
+    category: 'Treści Kreatywne',
+    title: 'Muzyka na Film Promocyjny',
+    description: 'Generowanie podkładu muzycznego bez opłat ZAIKS.',
+    steps: [
+      {
+        title: 'Ścieżka dźwiękowa do filmu o gminie',
+        instruction: 'Nakręciliście 2-minutowy film promocyjny o gminie (ujęcia z drona: pola, las, szkoła, plac zabaw, rynek). Potrzebujecie muzyki w tle, ale nie macie budżetu na licencje ZAIKS. Musisz stworzyć prompt dla Suno, które wygeneruje oryginalną muzykę idealnie pasującą do klimatu filmu.',
+        context: 'Film: 2 minuty, ujęcia: natura + infrastruktura, klimat: spokojny, rodzinny, optymistyczny, zastosowanie: social media, strona www',
+        promptBuilder: {
+          role: {
+            label: '🎭 ROLA',
+            placeholder: 'Kim ma być AI?',
+            hint: 'AI musi znać język muzyczny i filmowy',
+            example: 'Jesteś kompozytorem muzyki filmowej specjalizującym się w ścieżkach dźwiękowych do filmów promocyjnych, dokumentalnych i reklamowych. Potrafisz opisać nastrój muzyczny i instrumentację w sposób zrozumiały dla AI generujących muzykę.'
+          },
+          context: {
+            label: '📋 KONTEKST',
+            placeholder: 'Opisz film...',
+            hint: 'Co widać, jaka atmosfera',
+            example: 'Mamy 2-minutowy film promocyjny gminy: ujęcia z drona (pola, lasy, rzeka) + infrastruktura (szkoła, place zabaw, rynek) + życie codzienne. Film ma pokazywać gminę jako spokojne, przyjazne miejsce dla rodzin. Potrzebujemy muzyki bez praw autorskich (wygenerowanej w Suno).'
+          },
+          goal: {
+            label: '🎯 CEL',
+            placeholder: 'Co ma powstać?',
+            hint: 'Prompt dla Suno',
+            example: 'Napisz szczegółowy prompt dla Suno AI, które wygeneruje 2-minutową muzykę instrumentalną do filmu promocyjnego gminy. Muzyka ma być spokojna, ciepła, lekko optymistyczna, pasująca do ujęć natury i rodzinnego klimatu.'
+          },
+          format: {
+            label: '📄 FORMAT',
+            placeholder: 'Jak opisać muzykę dla Suno?',
+            hint: 'Styl, instrumenty, tempo, struktura',
+            example: 'Prompt dla Suno powinien zawierać:\n1. Styl muzyczny (np. "cinematic ambient")\n2. Instrumenty (np. "piano, strings, acoustic guitar")\n3. Tempo i nastrój (np. "slow, peaceful, uplifting")\n4. Strukturę (np. "intro - main theme - build up - gentle outro")\n5. Atmosferę (np. "nature documentary, family-friendly")\n\nŁącznie 3-5 zdań opisujących dokładnie, jak ma brzmieć utwór.'
+          },
+          constraints: {
+            label: '⚠️ OGRANICZENIA',
+            placeholder: 'Wymagania muzyczne...',
+            hint: 'Co musi, a czego nie może być',
+            example: 'Muzyka MUSI być: instrumentalna (bez śpiewu), 2 minuty, spokojna (pasująca do lektora w tle). NIE może być: zbyt dynamiczna, przytłaczająca, z wyraźnym beatem (film to nie reklama). Styl: naturalny, organiczny (akustyczne instrumenty preferowane nad syntezatorami). Atmosfera: ciepła, optymistyczna, ale NIE przesadnie radosna. Muzyka ma wspierać obraz, nie odwracać uwagi.'
+          },
+          inputData: {
+            label: '📝 KLIMAT FILMU DO UWZGLĘDNIENIA',
+            placeholder: 'Ujęcia, emocje...',
+            hint: 'Co będzie w kadrze',
+            example: 'Struktura filmu (2 minuty):\n\n0:00-0:40 - Ujęcia natury (pola, lasy, rzeka z lotu ptaka) - spokój, przestrzeń\n0:40-1:20 - Infrastruktura (szkoła, drogi, place zabaw) - nowoczesność, bezpieczeństwo\n1:20-2:00 - Ludzie (festyn, dzieci na placu zabaw, seniorzy) - wspólnota, życie\n\nEmocje docelowe: spokój → pewność → radość (subtelnie narastająca)'
+          }
+        },
+        learningNote: '💡 **Dlaczego to działa?** Suno potrzebuje precyzyjnego opisu stylu, instrumentów i atmosfery. Określając strukturę narracyjną ("spokój → pewność → radość") i wymaganie instrumentacji akustycznej, otrzymujesz prompt, który Suno przekształci w profesjonalną muzykę filmową bez kosztów licencji i ZAIKS.'
       }
     ]
   }
@@ -1990,20 +2263,125 @@ const TrainingApp = () => {
             </p>
           </div>
 
+          {/* SEKCJA 1: ROZGRZEWKA */}
           <section className="section-card">
             <div className="section-head">
               <div>
-                <p className="section-eyebrow">Wszystkie ćwiczenia</p>
-                <h2>Praktyczne scenariusze z pracy urzędu</h2>
+                <p className="section-eyebrow">1. Rozgrzewka</p>
+                <h2>Pierwsze kroki z AI - proste zadania</h2>
               </div>
-              <span className="section-tag">19 ćwiczeń</span>
+              <span className="section-tag">4 ćwiczenia</span>
             </div>
             <p className="section-intro">
-              Od prostych poprawek tekstu, przez trudną komunikację z mieszkańcami, analizę danych, po zaawansowane scenariusze
-              (mediacje, wnioski o dotacje, planowanie strategiczne). Każde ćwiczenie uczy budowania skutecznych promptów krok po kroku.
+              Jeśli nigdy nie używałeś AI w pracy, zacznij tutaj. Proste, krótkie zadania, które pokażą Ci podstawy
+              budowania promptów i przekonają, że AI to potężne narzędzie do codziennej pracy.
+            </p>
+            <div className="card-grid">
+              {exercises.filter(e => e.section === 'warmup').map(ex => (
+                <Card
+                  key={ex.id}
+                  item={ex}
+                  isCompleted={completedExercises.includes(ex.id)}
+                  onClick={() => setActiveExercise(ex)}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* SEKCJA 2: PLLuM - KOMUNIKACJA URZĘDOWA */}
+          <section className="section-card">
+            <div className="section-head">
+              <div>
+                <p className="section-eyebrow">2. Komunikacja Urzędowa</p>
+                <h2>Trudne sytuacje w JST - PLLuM w praktyce</h2>
+              </div>
+              <span className="section-tag">9 ćwiczeń</span>
+            </div>
+            <p className="section-intro">
+              Główne ćwiczenia z pozytywnego promptingu: emocjonalne skargi, język prawniczy, fake news,
+              mediacje, wnioski o dotacje. Naucz się budować prompty, które pomogą w najtrudniejszych
+              sytuacjach komunikacyjnych w administracji samorządowej.
             </p>
             <div className="card-grid card-grid--three">
-              {exercises.map(ex => (
+              {exercises.filter(e => e.section === 'main').map(ex => (
+                <Card
+                  key={ex.id}
+                  item={ex}
+                  isCompleted={completedExercises.includes(ex.id)}
+                  onClick={() => setActiveExercise(ex)}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* SEKCJA 3: ChatGPT - OBRAZY I PLIKI */}
+          <section className="section-card">
+            <div className="section-head">
+              <div>
+                <p className="section-eyebrow">3. ChatGPT - Więcej niż tekst</p>
+                <h2>Grafika, dane, dokumenty</h2>
+              </div>
+              <span className="section-tag">4 ćwiczenia</span>
+            </div>
+            <p className="section-intro">
+              ChatGPT potrafi znacznie więcej niż pisać teksty. Generuj plakaty (DALL-E), twórz skomplikowane
+              formuły Excel, projektuj szablony dokumentów i analizuj dane liczbowe. Odkryj funkcje,
+              które oszczędzą Ci godzin pracy z grafikami i analitykami.
+            </p>
+            <div className="card-grid">
+              {exercises.filter(e => e.section === 'chatgpt').map(ex => (
+                <Card
+                  key={ex.id}
+                  item={ex}
+                  isCompleted={completedExercises.includes(ex.id)}
+                  onClick={() => setActiveExercise(ex)}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* SEKCJA 4: AUDIO I MUZYKA */}
+          <section className="section-card">
+            <div className="section-head">
+              <div>
+                <p className="section-eyebrow">4. Audio i Muzyka</p>
+                <h2>ElevenLabs i Suno - głos i dźwięk</h2>
+              </div>
+              <span className="section-tag">5 ćwiczeń</span>
+            </div>
+            <p className="section-intro">
+              Generuj profesjonalne nagrania głosowe (ElevenLabs) do radia, filmów promocyjnych i audiobooków.
+              Twórz muzykę (Suno) na uroczystości gminne i filmy bez kosztów ZAIKS.
+              Multimedia bez studia nagraniowego i kompozytora.
+            </p>
+            <div className="card-grid card-grid--three">
+              {exercises.filter(e => e.section === 'media').map(ex => (
+                <Card
+                  key={ex.id}
+                  item={ex}
+                  isCompleted={completedExercises.includes(ex.id)}
+                  onClick={() => setActiveExercise(ex)}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* SEKCJA 5: EKSPERCI */}
+          <section className="section-card">
+            <div className="section-head">
+              <div>
+                <p className="section-eyebrow">5. Dla Ekspertów ⭐</p>
+                <h2>Zaawansowane scenariusze</h2>
+              </div>
+              <span className="section-tag">2 ćwiczenia</span>
+            </div>
+            <p className="section-intro">
+              Złożone, wielowątkowe zadania dla doświadczonych użytkowników: kompleksowy onboarding nowego pracownika
+              (30-dniowy plan) i analiza SWOT do planowania strategicznego gminy.
+              Prompty na poziomie konsultanta biznesowego.
+            </p>
+            <div className="card-grid">
+              {exercises.filter(e => e.section === 'expert').map(ex => (
                 <Card
                   key={ex.id}
                   item={ex}
