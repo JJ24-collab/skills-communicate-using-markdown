@@ -490,7 +490,7 @@ const exercises = [
   // ==========================================
   {
     id: 'basic_1',
-    section: 'basic',
+    section: 'warmup',
     category: 'Rozgrzewka',
     title: 'Korektor Tekstu',
     description: 'Najprostsze zastosowanie: poprawianie błędów ortograficznych i literówek.',
@@ -587,7 +587,7 @@ const exercises = [
   },
   {
     id: 'basic_2',
-    section: 'basic',
+    section: 'warmup',
     category: 'Rozgrzewka',
     title: 'Proste Pismo Urzędowe',
     description: 'Napisanie podania o urlop lub wewnętrznego zaproszenia.',
@@ -886,7 +886,7 @@ const exercises = [
   // ==========================================
   {
     id: 'pllum_festyn',
-    section: 'main',
+    section: 'warmup',
     category: 'Kreatywność',
     title: 'Organizacja Festynu',
     description: 'Tworzenie haseł promocyjnych i przemówień na gminne wydarzenia.',
@@ -992,7 +992,7 @@ const exercises = [
   },
   {
     id: 'pllum_awaria',
-    section: 'main',
+    section: 'warmup',
     category: 'Zarządzanie Kryzysem',
     title: 'Komunikat o Awarii',
     description: 'Szybkie informowanie mieszkańców o awariach infrastruktury.',
@@ -1155,7 +1155,7 @@ const exercises = [
   // ==========================================
   {
     id: 'gpt_analiza',
-    section: 'main',
+    section: 'chatgpt',
     category: 'Analiza Danych',
     title: 'Analiza Wydatków Budżetowych',
     description: 'Wyciąganie wniosków z danych liczbowych bez Excela.',
@@ -1269,7 +1269,7 @@ const exercises = [
   // ==========================================
   {
     id: 'gpt_plakat',
-    section: 'main',
+    section: 'chatgpt',
     category: 'Grafika AI',
     title: 'Generowanie Plakatu',
     description: 'Tworzenie grafik promocyjnych bez grafika.',
@@ -1322,7 +1322,7 @@ const exercises = [
   },
   {
     id: 'gpt_excel',
-    section: 'main',
+    section: 'chatgpt',
     category: 'Arkusze Kalkulacyjne',
     title: 'Formuły Excel',
     description: 'Pomoc w tworzeniu skomplikowanych formuł arkuszowych.',
@@ -1542,7 +1542,7 @@ const exercises = [
   },
   {
     id: 'pllum_hr',
-    section: 'main',
+    section: 'expert',
     category: 'HR i Onboarding',
     title: 'Onboarding Nowego Pracownika',
     description: '⭐ TRUDNE: Kompleksowy plan wdrożenia nowej osoby do zespołu.',
@@ -1596,7 +1596,7 @@ const exercises = [
   },
   {
     id: 'gpt_word',
-    section: 'main',
+    section: 'chatgpt',
     category: 'Generowanie Dokumentów',
     title: 'Szablon Dokumentu Word',
     description: 'Tworzenie gotowych szablonów dokumentów urzędowych.',
@@ -1649,7 +1649,7 @@ const exercises = [
   },
   {
     id: 'pllum_strategia',
-    section: 'main',
+    section: 'expert',
     category: 'Planowanie Strategiczne',
     title: 'Analiza SWOT',
     description: '⭐ TRUDNE: Tworzenie analizy strategicznej dla gminy.',
@@ -1707,7 +1707,7 @@ const exercises = [
   // ==========================================
   {
     id: 'elevenlabs_radio',
-    section: 'audio',
+    section: 'media',
     category: 'Komunikacja Głosowa',
     title: 'Komunikat Głosowy dla Radia',
     description: 'Tworzenie skryptu nagrania dla lokalnego radia.',
@@ -1760,7 +1760,7 @@ const exercises = [
   },
   {
     id: 'elevenlabs_film',
-    section: 'audio',
+    section: 'media',
     category: 'Komunikacja Głosowa',
     title: 'Lektor do Filmu Promocyjnego',
     description: 'Tworzenie profesjonalnego voice-over do wideo.',
@@ -1813,7 +1813,7 @@ const exercises = [
   },
   {
     id: 'elevenlabs_audiobook',
-    section: 'audio',
+    section: 'media',
     category: 'Dostępność Cyfrowa',
     title: 'Audiobook z Regulaminu',
     description: 'Tworzenie wersji audio dokumentów dla osób niewidomych.',
@@ -1870,7 +1870,7 @@ const exercises = [
   // ==========================================
   {
     id: 'suno_hymn',
-    section: 'music',
+    section: 'media',
     category: 'Treści Kreatywne',
     title: 'Hymn Jubileuszowy Gminy',
     description: 'Tworzenie tekstu piosenki na uroczystości gminne.',
@@ -1923,7 +1923,7 @@ const exercises = [
   },
   {
     id: 'suno_film_music',
-    section: 'music',
+    section: 'media',
     category: 'Treści Kreatywne',
     title: 'Muzyka na Film Promocyjny',
     description: 'Generowanie podkładu muzycznego bez opłat ZAIKS.',
@@ -2263,20 +2263,125 @@ const TrainingApp = () => {
             </p>
           </div>
 
+          {/* SEKCJA 1: ROZGRZEWKA */}
           <section className="section-card">
             <div className="section-head">
               <div>
-                <p className="section-eyebrow">Wszystkie ćwiczenia</p>
-                <h2>Praktyczne scenariusze z pracy urzędu</h2>
+                <p className="section-eyebrow">1. Rozgrzewka</p>
+                <h2>Pierwsze kroki z AI - proste zadania</h2>
               </div>
-              <span className="section-tag">19 ćwiczeń</span>
+              <span className="section-tag">4 ćwiczenia</span>
             </div>
             <p className="section-intro">
-              Od prostych poprawek tekstu, przez trudną komunikację z mieszkańcami, analizę danych, po zaawansowane scenariusze
-              (mediacje, wnioski o dotacje, planowanie strategiczne). Każde ćwiczenie uczy budowania skutecznych promptów krok po kroku.
+              Jeśli nigdy nie używałeś AI w pracy, zacznij tutaj. Proste, krótkie zadania, które pokażą Ci podstawy
+              budowania promptów i przekonają, że AI to potężne narzędzie do codziennej pracy.
+            </p>
+            <div className="card-grid">
+              {exercises.filter(e => e.section === 'warmup').map(ex => (
+                <Card
+                  key={ex.id}
+                  item={ex}
+                  isCompleted={completedExercises.includes(ex.id)}
+                  onClick={() => setActiveExercise(ex)}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* SEKCJA 2: PLLuM - KOMUNIKACJA URZĘDOWA */}
+          <section className="section-card">
+            <div className="section-head">
+              <div>
+                <p className="section-eyebrow">2. Komunikacja Urzędowa</p>
+                <h2>Trudne sytuacje w JST - PLLuM w praktyce</h2>
+              </div>
+              <span className="section-tag">9 ćwiczeń</span>
+            </div>
+            <p className="section-intro">
+              Główne ćwiczenia z pozytywnego promptingu: emocjonalne skargi, język prawniczy, fake news,
+              mediacje, wnioski o dotacje. Naucz się budować prompty, które pomogą w najtrudniejszych
+              sytuacjach komunikacyjnych w administracji samorządowej.
             </p>
             <div className="card-grid card-grid--three">
-              {exercises.map(ex => (
+              {exercises.filter(e => e.section === 'main').map(ex => (
+                <Card
+                  key={ex.id}
+                  item={ex}
+                  isCompleted={completedExercises.includes(ex.id)}
+                  onClick={() => setActiveExercise(ex)}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* SEKCJA 3: ChatGPT - OBRAZY I PLIKI */}
+          <section className="section-card">
+            <div className="section-head">
+              <div>
+                <p className="section-eyebrow">3. ChatGPT - Więcej niż tekst</p>
+                <h2>Grafika, dane, dokumenty</h2>
+              </div>
+              <span className="section-tag">4 ćwiczenia</span>
+            </div>
+            <p className="section-intro">
+              ChatGPT potrafi znacznie więcej niż pisać teksty. Generuj plakaty (DALL-E), twórz skomplikowane
+              formuły Excel, projektuj szablony dokumentów i analizuj dane liczbowe. Odkryj funkcje,
+              które oszczędzą Ci godzin pracy z grafikami i analitykami.
+            </p>
+            <div className="card-grid">
+              {exercises.filter(e => e.section === 'chatgpt').map(ex => (
+                <Card
+                  key={ex.id}
+                  item={ex}
+                  isCompleted={completedExercises.includes(ex.id)}
+                  onClick={() => setActiveExercise(ex)}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* SEKCJA 4: AUDIO I MUZYKA */}
+          <section className="section-card">
+            <div className="section-head">
+              <div>
+                <p className="section-eyebrow">4. Audio i Muzyka</p>
+                <h2>ElevenLabs i Suno - głos i dźwięk</h2>
+              </div>
+              <span className="section-tag">5 ćwiczeń</span>
+            </div>
+            <p className="section-intro">
+              Generuj profesjonalne nagrania głosowe (ElevenLabs) do radia, filmów promocyjnych i audiobooków.
+              Twórz muzykę (Suno) na uroczystości gminne i filmy bez kosztów ZAIKS.
+              Multimedia bez studia nagraniowego i kompozytora.
+            </p>
+            <div className="card-grid card-grid--three">
+              {exercises.filter(e => e.section === 'media').map(ex => (
+                <Card
+                  key={ex.id}
+                  item={ex}
+                  isCompleted={completedExercises.includes(ex.id)}
+                  onClick={() => setActiveExercise(ex)}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* SEKCJA 5: EKSPERCI */}
+          <section className="section-card">
+            <div className="section-head">
+              <div>
+                <p className="section-eyebrow">5. Dla Ekspertów ⭐</p>
+                <h2>Zaawansowane scenariusze</h2>
+              </div>
+              <span className="section-tag">2 ćwiczenia</span>
+            </div>
+            <p className="section-intro">
+              Złożone, wielowątkowe zadania dla doświadczonych użytkowników: kompleksowy onboarding nowego pracownika
+              (30-dniowy plan) i analiza SWOT do planowania strategicznego gminy.
+              Prompty na poziomie konsultanta biznesowego.
+            </p>
+            <div className="card-grid">
+              {exercises.filter(e => e.section === 'expert').map(ex => (
                 <Card
                   key={ex.id}
                   item={ex}
